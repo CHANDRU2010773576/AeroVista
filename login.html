@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sign in to your AeroVista Airlines account to manage bookings, check in, and view travel itineraries.">
+  <title>Log In | AeroVista Airlines</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Core & Auth Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="auth-page-body">
+
+  <!-- Background Layer -->
+  <div class="auth-bg-layer" aria-hidden="true"></div>
+
+  <!-- Top Header with Brand & Back Link -->
+  <header class="auth-header">
+    <a href="index.html" class="brand-logo" aria-label="AeroVista Airlines Home">
+      <svg class="gold-wing-icon" viewBox="0 0 44 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1.5 22C10 22 17 17 24 10C29 5 35 1.5 42.5 0.5C36 4.5 30 11 25.5 16C19 23.5 10 25.5 1.5 22Z" fill="url(#wingGradLogin)"/>
+        <path d="M7 23.5C13 23 19 19.5 24.5 14C28 10.5 33 8 38 6.5C32.5 10.5 27 16 23 20C17.5 25.5 10 25.5 7 23.5Z" fill="url(#wingGradLogin)" opacity="0.85"/>
+        <defs>
+          <linearGradient id="wingGradLogin" x1="1" y1="13" x2="42.5" y2="13" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#E5C98E"/>
+            <stop offset="0.6" stop-color="#C6A66B"/>
+            <stop offset="1" stop-color="#9C7838"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="logo-text-group">
+        <span class="logo-name">AeroVista</span>
+        <span class="logo-sub">AIRLINES</span>
+      </div>
+    </a>
+
+    <a href="index.html" class="auth-back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      <span>Back to Home</span>
+    </a>
+  </header>
+
+  <!-- Main Center Card -->
+  <main class="auth-main">
+    <section class="auth-card" aria-labelledby="loginHeading">
+      <div class="auth-card-header">
+        <h1 class="auth-title" id="loginHeading">Welcome Back</h1>
+        <p class="auth-subtitle">Sign in to manage your bookings and journey itineraries</p>
+      </div>
+
+      <!-- Alert notification container -->
+      <div class="auth-alert" id="loginAlert" role="alert"></div>
+
+      <form id="loginForm" class="auth-form" novalidate>
+        <!-- Email Field -->
+        <div class="auth-field-group">
+          <label class="auth-label" for="loginEmail">Email Address</label>
+          <div class="auth-input-wrapper">
+            <svg class="auth-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <input type="email" id="loginEmail" name="email" class="auth-input" placeholder="e.g. passenger@domain.com" autocomplete="email" required>
+          </div>
+          <span class="auth-error-msg" id="loginEmailError"></span>
+        </div>
+
+        <!-- Password Field with Show/Hide -->
+        <div class="auth-field-group">
+          <label class="auth-label" for="loginPassword">Password</label>
+          <div class="auth-input-wrapper">
+            <svg class="auth-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <input type="password" id="loginPassword" name="password" class="auth-input" placeholder="Enter your password" autocomplete="current-password" required>
+            <button type="button" class="btn-toggle-password" data-target="loginPassword" aria-label="Show password">
+              <svg class="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <svg class="icon-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                <line x1="1" y1="1" x2="23" y2="23"></line>
+              </svg>
+            </button>
+          </div>
+          <span class="auth-error-msg" id="loginPasswordError"></span>
+        </div>
+
+        <!-- Options: Remember Me & Forgot Password -->
+        <div class="auth-options-row">
+          <label class="auth-checkbox-label">
+            <input type="checkbox" id="rememberMeCheckbox" name="rememberMe">
+            <span>Remember Me</span>
+          </label>
+          <a href="#" class="auth-forgot-link" onclick="alert('Password reset instructions will be sent to your registered email address.'); return false;">Forgot Password?</a>
+        </div>
+
+        <!-- Gold Login Button -->
+        <button type="submit" class="btn-auth-submit" id="btnLoginSubmit">
+          <span>Log In</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </form>
+
+      <!-- Bottom link to Register -->
+      <footer class="auth-card-footer">
+        <span>Don't have an account?</span>
+        <a href="register.html" class="auth-switch-link">Create Account</a>
+      </footer>
+    </section>
+  </main>
+
+  <!-- Compact Footer -->
+  <footer class="auth-page-footer">
+    <div class="auth-page-footer-container">
+      <p class="copyright-text">&copy; 2026 AeroVista Airlines. All rights reserved.</p>
+      <p class="disclaimer-text">Official AeroVista Booking Portal</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/auth.js"></script>
+</body>
+</html>
+

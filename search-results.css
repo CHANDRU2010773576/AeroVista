@@ -1,0 +1,1573 @@
+/* ==========================================================================
+   AeroVista Airlines – Flight Search Results Stylesheet (Step 5)
+   Matching Theme: Obsidian (#151515), Champagne Gold (#C6A66B), Ivory (#F5F2EB)
+   ========================================================================== */
+
+/* Page Wrapper */
+.results-page-main {
+  min-height: calc(100vh - 180px);
+  padding-top: 96px;
+  /* Below fixed navbar */
+  padding-bottom: 80px;
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(circle at 85% 15%, rgba(198, 166, 107, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 10% 60%, rgba(198, 166, 107, 0.03) 0%, transparent 35%);
+}
+
+/* ==========================================================================
+   1. Compact Journey Summary Bar (Sticky or Top Bar)
+   ========================================================================== */
+.journey-summary-bar {
+  background: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(198, 166, 107, 0.25);
+  padding: 14px 0;
+  position: sticky;
+  top: 74px;
+  /* navbar height */
+  z-index: 40;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.journey-summary-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.journey-summary-chips {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.summary-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(198, 166, 107, 0.2);
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.summary-chip svg {
+  width: 15px;
+  height: 15px;
+  stroke: var(--color-gold);
+  flex-shrink: 0;
+}
+
+.summary-chip .route-codes {
+  font-weight: 700;
+  color: var(--color-gold-light);
+  letter-spacing: 0.5px;
+}
+
+.summary-chip .chip-label {
+  color: var(--color-text-muted);
+}
+
+.btn-modify-search {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold);
+  padding: 7px 18px;
+  border-radius: 30px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: inherit;
+}
+
+.btn-modify-search:hover {
+  background: var(--color-gold);
+  color: var(--color-bg);
+  box-shadow: 0 0 14px rgba(198, 166, 107, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-modify-search svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+}
+
+/* ==========================================================================
+   Modify Search Collapsible Panel & High-Contrast Form Controls
+   ========================================================================== */
+.modify-search-drawer {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, padding 0.3s ease;
+}
+
+.modify-search-drawer.is-open {
+  max-height: 900px;
+  opacity: 1;
+  visibility: visible;
+  padding-top: 18px;
+  padding-bottom: 22px;
+}
+
+.modify-search-card {
+  background: #181818;
+  border: 1px solid rgba(198, 166, 107, 0.45);
+  border-radius: 16px;
+  padding: 26px 28px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 1px 1px rgba(198, 166, 107, 0.2);
+}
+
+.modify-card-header {
+  margin-bottom: 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 14px;
+}
+
+.modify-header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.modify-header-title svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--color-gold);
+}
+
+.modify-header-title h3 {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--color-gold-light);
+  margin: 0;
+}
+
+.modify-header-desc {
+  font-size: 0.84rem;
+  color: #B5B5B5;
+  margin: 0;
+}
+
+.modify-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px 20px;
+  margin-bottom: 20px;
+}
+
+.modify-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.modify-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #E2DFD7;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.modify-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.modify-input,
+.modify-select {
+  width: 100%;
+  background: #101010;
+  border: 1.5px solid rgba(198, 166, 107, 0.35);
+  border-radius: 9px;
+  color: #FFFFFF !important;
+  font-size: 0.92rem;
+  font-weight: 500;
+  padding: 11px 38px 11px 14px;
+  outline: none;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.modify-input::placeholder {
+  color: #888888;
+}
+
+.modify-input:focus,
+.modify-select:focus {
+  border-color: var(--color-gold);
+  background: #0D0D0D;
+  box-shadow: 0 0 0 3px rgba(198, 166, 107, 0.25), inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.modify-select {
+  appearance: none;
+  cursor: pointer;
+}
+
+.modify-select option {
+  background: #1E1E1E;
+  color: #FFFFFF;
+  padding: 10px;
+}
+
+.modify-field-icon {
+  position: absolute;
+  right: 12px;
+  width: 16px;
+  height: 16px;
+  stroke: var(--color-gold);
+  pointer-events: none;
+}
+
+/* Native Date Picker Theme Adjustments for dark contrast */
+.modify-date-picker::-webkit-calendar-picker-indicator {
+  filter: invert(0.8) sepia(1) saturate(5) hue-rotate(5deg);
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.modify-error-msg {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #FCA5A5;
+  font-size: 0.84rem;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.modify-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.btn-modify-cancel {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #E5E5E5;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.btn-modify-cancel:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #FFFFFF;
+}
+
+.btn-modify-search-submit {
+  background: linear-gradient(135deg, #E5C98E 0%, #C6A66B 60%, #9C7838 100%);
+  color: #151515;
+  border: none;
+  padding: 10px 26px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+  font-family: inherit;
+  box-shadow: 0 4px 14px rgba(198, 166, 107, 0.35);
+}
+
+.btn-modify-search-submit svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+}
+
+.btn-modify-search-submit:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(198, 166, 107, 0.45);
+}
+
+/* ==========================================================================
+   2. Main Container & Journey Title Heading
+   ========================================================================== */
+.results-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 32px 24px 0;
+}
+
+.results-header-block {
+  margin-bottom: 28px;
+}
+
+.trip-step-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(198, 166, 107, 0.1);
+  border: 1px solid rgba(198, 166, 107, 0.3);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-gold-light);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.trip-step-indicator .step-badge {
+  background: var(--color-gold);
+  color: var(--color-bg);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.journey-main-title {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+
+.journey-main-title .gold-city {
+  color: var(--color-gold-light);
+  font-style: italic;
+}
+
+.journey-date-sub {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.journey-date-sub svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--color-gold);
+}
+
+/* Multi-leg Roundtrip Banner (when selecting return) */
+.outbound-confirmed-banner {
+  background: rgba(198, 166, 107, 0.08);
+  border: 1px solid rgba(198, 166, 107, 0.3);
+  border-radius: 12px;
+  padding: 14px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.outbound-confirmed-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+}
+
+.outbound-check-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(56, 189, 120, 0.15);
+  border: 1px solid #38bd78;
+  color: #38bd78;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.btn-change-outbound {
+  background: transparent;
+  border: 1px solid rgba(198, 166, 107, 0.4);
+  color: var(--color-gold-light);
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-change-outbound:hover {
+  background: rgba(198, 166, 107, 0.15);
+  border-color: var(--color-gold);
+}
+
+/* ==========================================================================
+   3. Horizontal Travel Date Selector Strip
+   ========================================================================== */
+.date-selector-wrapper {
+  background: var(--color-surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  margin-bottom: 24px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.date-selector-track {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  divide-x: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.date-selector-tab {
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 14px 10px;
+  text-align: center;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  font-family: inherit;
+}
+
+.date-selector-tab:last-child {
+  border-right: none;
+}
+
+.date-selector-tab:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--color-text-primary);
+}
+
+.date-selector-tab.is-active {
+  background: rgba(198, 166, 107, 0.08);
+  border-bottom-color: var(--color-gold);
+  color: var(--color-gold-light);
+}
+
+.date-selector-tab .tab-day-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.date-selector-tab .tab-fare-estimate {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.date-selector-tab.is-active .tab-fare-estimate {
+  color: var(--color-gold);
+  font-weight: 700;
+}
+
+.date-selector-tab.is-lowest::after {
+  content: 'Lowest';
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  font-size: 0.65rem;
+  background: rgba(56, 189, 120, 0.15);
+  color: #38bd78;
+  border: 1px solid rgba(56, 189, 120, 0.3);
+  padding: 1px 5px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+/* ==========================================================================
+   4. Search Controls Bar (Results Count & Sort/Filter)
+   ========================================================================== */
+.search-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.results-count-group {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.results-count-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.results-count-subtitle {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+.controls-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.filter-select {
+  appearance: none;
+  background: var(--color-surface);
+  border: 1px solid rgba(198, 166, 107, 0.3);
+  border-radius: 8px;
+  color: var(--color-text-primary);
+  font-size: 0.85rem;
+  padding: 8px 36px 8px 14px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 2px rgba(198, 166, 107, 0.2);
+}
+
+.filter-select option {
+  background: #1c1c1c;
+  color: #fff;
+}
+
+.filter-select-arrow {
+  position: absolute;
+  right: 12px;
+  pointer-events: none;
+  width: 14px;
+  height: 14px;
+  stroke: var(--color-gold);
+}
+
+.btn-filter-drawer-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-surface);
+  border: 1px solid rgba(198, 166, 107, 0.3);
+  border-radius: 8px;
+  color: var(--color-text-primary);
+  font-size: 0.85rem;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.btn-filter-drawer-toggle:hover,
+.btn-filter-drawer-toggle.is-active {
+  border-color: var(--color-gold);
+  color: var(--color-gold-light);
+  background: rgba(198, 166, 107, 0.08);
+}
+
+/* Secondary Filter Panel (Collapsible) */
+.filter-tags-strip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+  border: 1px dashed rgba(198, 166, 107, 0.2);
+}
+
+.filter-tag-label {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+.filter-pill-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  color: var(--color-text-primary);
+  font-size: 0.8rem;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.filter-pill-btn:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold-light);
+}
+
+.filter-pill-btn.active {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-bg);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   5. Promotional Cabin Experience Banner (Qatar reference style)
+   ========================================================================== */
+.promo-cabin-banner {
+  background: linear-gradient(90deg, #12100E 0%, #201815 50%, #12100E 100%);
+  border: 1px solid rgba(198, 166, 107, 0.35);
+  border-radius: 16px;
+  padding: 24px 32px;
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.promo-cabin-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 75% 50%, rgba(198, 166, 107, 0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.promo-cabin-content {
+  position: relative;
+  z-index: 2;
+  max-width: 580px;
+}
+
+.promo-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 6px;
+}
+
+.promo-headline {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 6px;
+}
+
+.promo-description {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.promo-action {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.btn-promo-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold-light);
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: inherit;
+}
+
+.btn-promo-explore:hover {
+  background: var(--color-gold);
+  color: var(--color-bg);
+  box-shadow: 0 0 16px rgba(198, 166, 107, 0.4);
+}
+
+/* ==========================================================================
+   6. Flight Result Cards
+   ========================================================================== */
+.flight-results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.flight-card {
+  background: var(--color-surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+
+.flight-card:hover {
+  border-color: rgba(198, 166, 107, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 1px 1px rgba(198, 166, 107, 0.2);
+}
+
+.flight-card.is-selected {
+  border-color: var(--color-gold);
+  background: linear-gradient(180deg, rgba(198, 166, 107, 0.04) 0%, rgba(26, 26, 26, 0.98) 100%);
+  box-shadow: 0 0 0 2px rgba(198, 166, 107, 0.4), 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Top Feature Tag (Starlink Wi-Fi, Lowest Fare, etc.) */
+.flight-card-features {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.feature-tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-gold-light);
+  font-weight: 500;
+}
+
+.feature-tag-chip svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--color-gold);
+}
+
+.feature-tag-badge {
+  background: rgba(198, 166, 107, 0.15);
+  border: 1px solid rgba(198, 166, 107, 0.3);
+  color: var(--color-gold-light);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Card Main Layout: Schedule / Route (Left) + Cabin Class Pricing (Right) */
+.flight-card-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* Route & Schedule Column */
+.flight-route-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.flight-times-track {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.time-block {
+  text-align: left;
+}
+
+.time-block.arrival {
+  text-align: right;
+}
+
+.time-val {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  font-feature-settings: "tnum";
+  line-height: 1.1;
+}
+
+.next-day-sup {
+  font-size: 0.75rem;
+  color: var(--color-gold);
+  font-weight: 700;
+  margin-left: 2px;
+  vertical-align: super;
+}
+
+.airport-code-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-gold-light);
+  letter-spacing: 0.5px;
+  margin-top: 3px;
+}
+
+.airport-city-sub {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+/* Route Diagram Track (Middle of Times) */
+.route-duration-diagram {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 0 10px;
+}
+
+.flight-duration-label {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.flight-line-track {
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.15);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plane-mid-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--color-gold);
+  background: var(--color-surface);
+  padding: 0 2px;
+  transform: rotate(90deg);
+}
+
+.flight-stops-label {
+  font-size: 0.76rem;
+  color: var(--color-gold-light);
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+.flight-stops-label.direct {
+  color: #38bd78;
+}
+
+/* Card Actions (Flight Details Link) */
+.flight-card-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+  font-size: 0.84rem;
+}
+
+.flight-number-tag {
+  color: var(--color-text-muted);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.btn-flight-details-toggle {
+  background: transparent;
+  border: none;
+  color: var(--color-gold);
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px;
+  transition: all 0.2s;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-family: inherit;
+}
+
+.btn-flight-details-toggle:hover {
+  color: #fff;
+}
+
+.btn-flight-details-toggle svg {
+  width: 12px;
+  height: 12px;
+  stroke: currentColor;
+  transition: transform 0.25s ease;
+}
+
+.btn-flight-details-toggle.is-open svg {
+  transform: rotate(180deg);
+}
+
+/* ==========================================================================
+   7. Cabin Class Pricing Columns (Economy vs Business)
+   ========================================================================== */
+.flight-cabins-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.cabin-fare-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.cabin-fare-box:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(198, 166, 107, 0.35);
+}
+
+.cabin-fare-box.is-preferred {
+  border-color: rgba(198, 166, 107, 0.4);
+  background: rgba(198, 166, 107, 0.04);
+}
+
+.cabin-fare-box.is-selected {
+  border-color: var(--color-gold);
+  background: rgba(198, 166, 107, 0.12);
+  box-shadow: 0 0 12px rgba(198, 166, 107, 0.25);
+}
+
+.cabin-name-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.cabin-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.cabin-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.cabin-badge.special {
+  background: rgba(198, 166, 107, 0.18);
+  color: var(--color-gold);
+}
+
+.cabin-badge.premium {
+  background: rgba(147, 51, 234, 0.18);
+  color: #c084fc;
+}
+
+.cabin-price-block {
+  margin-bottom: 14px;
+}
+
+.fare-currency-sym {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  margin-right: 2px;
+}
+
+.fare-numeric-val {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  font-feature-settings: "tnum";
+}
+
+.fare-per-person {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  display: block;
+  margin-top: 2px;
+}
+
+.cabin-unavailable {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  font-style: italic;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.btn-select-cabin {
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--color-gold);
+  background: transparent;
+  color: var(--color-gold);
+  transition: all 0.2s ease;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn-select-cabin:hover:not(:disabled) {
+  background: var(--color-gold);
+  color: var(--color-bg);
+  box-shadow: 0 0 12px rgba(198, 166, 107, 0.35);
+}
+
+.btn-select-cabin.selected {
+  background: var(--color-gold);
+  color: var(--color-bg);
+  box-shadow: 0 0 12px rgba(198, 166, 107, 0.35);
+}
+
+.btn-select-cabin:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   8. Expandable Flight Details Panel
+   ========================================================================== */
+.flight-details-expanded {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(198, 166, 107, 0.25);
+  display: none;
+  animation: fadeInDetails 0.3s ease-out;
+}
+
+.flight-details-expanded.is-open {
+  display: block;
+}
+
+@keyframes fadeInDetails {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 20px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  padding: 18px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.details-section-title {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--color-gold);
+  font-weight: 700;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.itinerary-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.itinerary-timeline::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: rgba(198, 166, 107, 0.3);
+}
+
+.timeline-point {
+  position: relative;
+}
+
+.timeline-point::before {
+  content: '';
+  position: absolute;
+  left: -18px;
+  top: 5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  box-shadow: 0 0 6px var(--color-gold);
+}
+
+.point-time {
+  font-weight: 700;
+  color: var(--color-text-primary);
+  font-size: 0.9rem;
+}
+
+.point-airport {
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+}
+
+.amenities-list,
+.baggage-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.amenity-item,
+.baggage-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.84rem;
+  color: var(--color-text-primary);
+}
+
+.amenity-item svg,
+.baggage-item svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--color-gold);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   9. Sticky Bottom Selection Confirmation Bar
+   ========================================================================== */
+.selection-bottom-dock {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(21, 21, 21, 0.96);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(198, 166, 107, 0.35);
+  padding: 16px 24px;
+  z-index: 50;
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.5);
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.selection-bottom-dock.is-visible {
+  transform: translateY(0);
+}
+
+.dock-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.dock-flight-info {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.dock-badge {
+  background: var(--color-gold);
+  color: var(--color-bg);
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dock-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dock-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.dock-sub {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+.dock-action-group {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.dock-total-fare {
+  text-align: right;
+}
+
+.dock-total-label {
+  font-size: 0.76rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dock-total-amount {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-gold-light);
+  line-height: 1.1;
+}
+
+.btn-continue-step6 {
+  background: linear-gradient(135deg, #E5C98E 0%, #C6A66B 60%, #9C7838 100%);
+  color: #151515;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 28px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: inherit;
+  box-shadow: 0 4px 15px rgba(198, 166, 107, 0.35);
+}
+
+.btn-continue-step6:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(198, 166, 107, 0.5);
+  filter: brightness(1.06);
+}
+
+.btn-continue-step6 svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+}
+
+/* ==========================================================================
+   10. Empty State / No Flights Available
+   ========================================================================== */
+.no-flights-state {
+  text-align: center;
+  padding: 64px 24px;
+  background: var(--color-surface);
+  border: 1px dashed rgba(198, 166, 107, 0.3);
+  border-radius: 16px;
+  margin: 20px 0;
+}
+
+.no-flights-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 18px;
+  color: var(--color-gold);
+  opacity: 0.7;
+}
+
+.no-flights-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+}
+
+.no-flights-desc {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  max-width: 520px;
+  margin: 0 auto 24px;
+  line-height: 1.5;
+}
+
+/* Step 6 Readiness Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  padding: 20px;
+}
+
+.modal-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-box {
+  background: #1c1c1c;
+  border: 1px solid var(--color-gold);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 520px;
+  padding: 32px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(198, 166, 107, 0.2);
+  text-align: center;
+  position: relative;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.is-active .modal-box {
+  transform: translateY(0);
+}
+
+.modal-success-icon {
+  width: 60px;
+  height: 60px;
+  background: rgba(198, 166, 107, 0.15);
+  border: 2px solid var(--color-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  color: var(--color-gold);
+}
+
+.modal-success-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.modal-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+}
+
+.modal-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.modal-summary-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 24px;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modal-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.88rem;
+}
+
+.modal-row:last-child {
+  margin-bottom: 0;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 700;
+  color: var(--color-gold-light);
+}
+
+.modal-close-btn {
+  background: var(--color-gold);
+  color: var(--color-bg);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.modal-close-btn:hover {
+  background: var(--color-gold-light);
+}
+
+/* ==========================================================================
+   11. Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 992px) {
+  .flight-card-main-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .flight-route-column {
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 18px;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .date-selector-track {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .date-selector-tab:nth-child(n+5) {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .journey-main-title {
+    font-size: 1.6rem;
+  }
+
+  .promo-cabin-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .flight-cabins-column {
+    grid-template-columns: 1fr;
+  }
+
+  .dock-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .dock-action-group {
+    justify-content: space-between;
+  }
+
+  .date-selector-track {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .date-selector-tab:nth-child(n+4) {
+    display: none;
+  }
+}

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="AeroVista Airlines - Select your preferred flight from Dubai to Mumbai, London, Paris and worldwide luxury destinations.">
+  <title>Select Flights | AeroVista Airlines</title>
+
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Core Theme & Page Specific Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/search-results.css">
+</head>
+
+<body>
+
+  <!-- Navigation Bar (Passenger-Facing Only) -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo" aria-label="AeroVista Airlines Home">
+        <svg class="gold-wing-icon" viewBox="0 0 44 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1.5 22C10 22 17 17 24 10C29 5 35 1.5 42.5 0.5C36 4.5 30 11 25.5 16C19 23.5 10 25.5 1.5 22Z"
+            fill="url(#wingGradResults)" />
+          <path d="M7 23.5C13 23 19 19.5 24.5 14C28 10.5 33 8 38 6.5C32.5 10.5 27 16 23 20C17.5 25.5 10 25.5 7 23.5Z"
+            fill="url(#wingGradResults)" opacity="0.85" />
+          <defs>
+            <linearGradient id="wingGradResults" x1="1" y1="13" x2="42.5" y2="13" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#E5C98E" />
+              <stop offset="0.6" stop-color="#C6A66B" />
+              <stop offset="1" stop-color="#9C7838" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="logo-text-group">
+          <span class="logo-name">AeroVista</span>
+          <span class="logo-sub">AIRLINES</span>
+        </div>
+      </a>
+
+      <!-- Desktop Passenger Nav Links (No Admin Portal) -->
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#booking-section" class="nav-link active">Book Flights</a>
+        <a href="index.html#manage-booking-anchor" class="nav-link">Manage Booking</a>
+      </nav>
+
+      <!-- Auth Actions -->
+      <div class="nav-auth-group">
+        <a href="login.html" class="btn-auth-outline">
+          <svg class="icon-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span>Log In</span>
+        </a>
+        <a href="register.html" class="btn-auth-gold">Register</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sticky Compact Journey Summary Bar -->
+  <section class="journey-summary-bar">
+    <div class="journey-summary-inner">
+      <div class="journey-summary-chips">
+        <div class="summary-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+          </svg>
+          <span class="route-codes" id="summaryRouteCodes">DXB ⇄ BOM</span>
+        </div>
+
+        <div class="summary-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          <span id="summaryDates">Thu, 19 Nov – Sun, 22 Nov</span>
+        </div>
+
+        <div class="summary-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+          </svg>
+          <span id="summaryPassengers">1 passenger</span>
+        </div>
+
+        <div class="summary-chip">
+          <span class="chip-label">Class:</span>
+          <span id="summaryCabin" style="color: var(--color-gold-light); font-weight: 600;">Economy</span>
+        </div>
+      </div>
+
+      <button class="btn-modify-search" id="btnModifySearch" aria-label="Modify search details">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+          <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+        </svg>
+        Modify Search
+      </button>
+    </div>
+
+    <!-- Collapsible Modify Search Drawer (Hidden by default) -->
+    <div class="modify-search-drawer" id="modifySearchDrawer">
+      <div class="modify-search-card">
+        <div class="modify-card-header">
+          <div class="modify-header-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+            <h3>Modify Your Flight Search</h3>
+          </div>
+          <p class="modify-header-desc">Update your destination, travel dates, passenger party, or cabin class</p>
+        </div>
+
+        <form id="modifySearchForm" novalidate>
+          <div class="modify-grid">
+            <!-- Trip Type -->
+            <div class="modify-field-group">
+              <label class="modify-label" for="modTripType">Trip Type</label>
+              <div class="modify-input-wrapper">
+                <select class="modify-select" id="modTripType">
+                  <option value="round-trip">Round-trip</option>
+                  <option value="one-way">One-way</option>
+                </select>
+                <svg class="modify-field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Origin City -->
+            <div class="modify-field-group">
+              <label class="modify-label" for="modFromCity">From (Origin)</label>
+              <div class="modify-input-wrapper">
+                <input type="text" class="modify-input" id="modFromCity" placeholder="City or airport" required>
+                <svg class="modify-field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Destination City -->
+            <div class="modify-field-group">
+              <label class="modify-label" for="modToCity">To (Destination)</label>
+              <div class="modify-input-wrapper">
+                <input type="text" class="modify-input" id="modToCity" placeholder="City or airport" required>
+                <svg class="modify-field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Departure Date -->
+            <div class="modify-field-group">
+              <label class="modify-label" for="modDeptDate">Departure Date</label>
+              <div class="modify-input-wrapper">
+                <input type="date" class="modify-input modify-date-picker" id="modDeptDate" required>
+              </div>
+            </div>
+
+            <!-- Return Date (Dynamically toggled for Round-trip only) -->
+            <div class="modify-field-group" id="modReturnGroup">
+              <label class="modify-label" for="modReturnDate">Return Date</label>
+              <div class="modify-input-wrapper">
+                <input type="date" class="modify-input modify-date-picker" id="modReturnDate">
+              </div>
+            </div>
+
+            <!-- Adults -->
+            <div class="modify-field-group">
+              <label class="modify-label" for="modAdults">Adults (12+ yrs)</label>
+              <div class="modify-input-wrapper">
+                <input type="number" class="modify-input" id="modAdults" min="1" max="9" value="1" required>
+              </div>
+            </div>
+
+            <!-- Children -->
+            <div class="modify-field-group">
+              <label class="modify-label" for="modChildren">Children (2-11 yrs)</label>
+              <div class="modify-input-wrapper">
+                <input type="number" class="modify-input" id="modChildren" min="0" max="8" value="0">
+              </div>
+            </div>
+
+            <!-- Infants -->
+            <div class="modify-field-group">
+              <label class="modify-label" for="modInfants">Infants (&lt;2 yrs)</label>
+              <div class="modify-input-wrapper">
+                <input type="number" class="modify-input" id="modInfants" min="0" max="4" value="0">
+              </div>
+            </div>
+
+            <!-- Cabin Class -->
+            <div class="modify-field-group">
+              <label class="modify-label" for="modCabinClass">Cabin Class</label>
+              <div class="modify-input-wrapper">
+                <select class="modify-select" id="modCabinClass">
+                  <option value="economy">Economy</option>
+                  <option value="business">Business</option>
+                  <option value="first">First Class</option>
+                </select>
+                <svg class="modify-field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Error Alert inside Drawer -->
+          <div id="modifyErrorAlert" class="modify-error-msg" style="display: none;"></div>
+
+          <!-- Actions -->
+          <div class="modify-actions-row">
+            <button type="button" class="btn-modify-cancel" id="btnCancelModify">
+              Cancel
+            </button>
+            <button type="submit" class="btn-modify-search-submit" id="btnSubmitModify">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+              Search Flights
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Search Results Body -->
+  <main class="results-page-main">
+    <div class="results-container">
+
+      <!-- Outbound Confirmed Status (Shown during return leg selection for round-trips) -->
+      <div class="outbound-confirmed-banner" id="outboundConfirmedBanner" style="display: none;">
+        <div class="outbound-confirmed-info">
+          <div class="outbound-check-icon">✓</div>
+          <div id="outboundConfirmedDetails">
+            <strong>Outbound Confirmed:</strong> AV-801 (DXB → BOM) • 13:10 - 02:35 (+1) • Economy (₹3,705)
+          </div>
+        </div>
+        <button class="btn-change-outbound" id="btnChangeOutbound">Change Outbound Flight</button>
+      </div>
+
+      <!-- Main Journey Title & Subtitle -->
+      <div class="results-header-block">
+        <div class="trip-step-indicator" id="tripLegBadge">
+          <span class="step-badge">1</span> OUTBOUND FLIGHT
+        </div>
+        <h1 class="journey-main-title" id="journeyTitle">
+          Select your departure flight from <span class="gold-city">Dubai</span> to <span class="gold-city">Mumbai</span>
+        </h1>
+        <div class="journey-date-sub">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          <span id="journeySubDate">Thu, 19 Nov 2026</span>
+        </div>
+      </div>
+
+      <!-- Horizontal Travel Date Selector (Adjacent 7 Days with Fares) -->
+      <div class="date-selector-wrapper">
+        <div class="date-selector-track" id="dateSelectorTrack">
+          <!-- Dynamic 7-day tabs injected via JS -->
+        </div>
+      </div>
+
+      <!-- Search Controls Bar (Results Count & Sort/Filter Dropdowns) -->
+      <div class="search-controls-bar">
+        <div class="results-count-group">
+          <span class="results-count-title" id="resultsCountNumber">10 results</span>
+          <span class="results-count-subtitle">Fares displayed in INR (₹) per passenger</span>
+        </div>
+
+        <div class="controls-actions-group">
+          <!-- Quick Filter Pills -->
+          <div class="filter-tags-strip" style="margin-bottom: 0; padding: 4px 10px;">
+            <span class="filter-tag-label">Stops:</span>
+            <button class="filter-pill-btn active" data-filter="all">All Flights</button>
+            <button class="filter-pill-btn" data-filter="direct">Direct Only</button>
+            <button class="filter-pill-btn" data-filter="stops">1+ Stops</button>
+          </div>
+
+          <!-- Sort Dropdown -->
+          <div class="filter-select-wrapper">
+            <select class="filter-select" id="sortSelect" aria-label="Sort flight options">
+              <option value="price-low">Lowest Fare</option>
+              <option value="price-high">Highest Fare</option>
+              <option value="duration">Shortest Duration</option>
+              <option value="earliest">Earliest Departure</option>
+              <option value="latest">Latest Departure</option>
+            </select>
+            <svg class="filter-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Promotional Luxury Cabin Experience Banner (Qatar reference style) -->
+      <div class="promo-cabin-banner">
+        <div class="promo-cabin-content">
+          <span class="promo-badge">The Ultimate Suite In The Sky</span>
+          <h2 class="promo-headline">Experience AeroVista Premier Suites</h2>
+          <p class="promo-description">
+            Private double beds, quad seating for families, ambient mood lighting, and Michelin-inspired culinary service across our Boeing 787 & Airbus A350 fleet.
+          </p>
+        </div>
+        <div class="promo-action">
+          <button class="btn-promo-explore" onclick="alert('AeroVista Premier Suites feature fully flat beds, privacy doors, 4K OLED entertainment, and dedicated lounge access.')">
+            Explore Luxury Suites
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Vertical Flight Result Cards Container -->
+      <div class="flight-results-list" id="flightListContainer">
+        <!-- Rendered dynamically by js/search-results.js -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Sticky Bottom Flight Selection Dock -->
+  <aside class="selection-bottom-dock" id="selectionBottomDock">
+    <div class="dock-inner">
+      <div class="dock-flight-info">
+        <span class="dock-badge">Selection Ready</span>
+        <div class="dock-details">
+          <span class="dock-title" id="dockTitle">AV-801 Selected (ECONOMY)</span>
+          <span class="dock-sub" id="dockSub">Dubai to Mumbai • 1 Passenger</span>
+        </div>
+      </div>
+
+      <div class="dock-action-group">
+        <div class="dock-total-fare">
+          <span class="dock-total-label">Total Estimated Fare</span>
+          <div class="dock-total-amount" id="dockTotalAmount">₹3,705</div>
+        </div>
+        <button class="btn-continue-step6" id="btnContinueStep6">
+          <span>Continue to Seat Selection</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Step 6 Readiness Summary Modal -->
+  <div class="modal-overlay" id="step6Modal">
+    <div class="modal-box">
+      <div class="modal-success-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+      </div>
+      <h3 class="modal-title">Flight Selection Confirmed</h3>
+      <p class="modal-desc">
+        Your selected flight details and fare have been saved in <code>sessionStorage</code> and are ready for <strong>Step 6: Seat Selection & Passenger Manifest</strong>.
+      </p>
+
+      <div class="modal-summary-card" id="modalFlightDetails">
+        <!-- Injected dynamically -->
+      </div>
+
+      <button class="modal-close-btn" id="btnCloseModal">Back to Search Results</button>
+    </div>
+  </div>
+
+  <!-- Passenger-Facing Footer (No Admin Portal Links) -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-bottom" style="border-top: 1px solid rgba(198,166,107,0.2); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+        <p class="copyright-text" style="color: var(--color-text-muted); font-size: 0.85rem;">
+          &copy; 2026 AeroVista Airlines. All rights reserved. Precision luxury flight reservation system.
+        </p>
+        <div class="footer-legal-links" style="display: flex; gap: 20px; font-size: 0.82rem;">
+          <a href="index.html" style="color: var(--color-gold); text-decoration: none; font-weight: 500;">Return to Home</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/search-results.js"></script>
+  <script src="js/session-nav.js"></script>
+</body>
+
+</html>

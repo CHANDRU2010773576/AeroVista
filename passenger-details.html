@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="AeroVista Airlines - Enter passenger identification and contact details for your reservation.">
+  <title>Passenger Details | AeroVista Airlines</title>
+
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Core Theme & Page Specific Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/passenger-details.css">
+</head>
+
+<body>
+
+  <!-- Navigation Bar (Passenger-Facing) -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo" aria-label="AeroVista Airlines Home">
+        <svg class="gold-wing-icon" viewBox="0 0 44 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1.5 22C10 22 17 17 24 10C29 5 35 1.5 42.5 0.5C36 4.5 30 11 25.5 16C19 23.5 10 25.5 1.5 22Z"
+            fill="url(#wingGradPassenger)" />
+          <path d="M7 23.5C13 23 19 19.5 24.5 14C28 10.5 33 8 38 6.5C32.5 10.5 27 16 23 20C17.5 25.5 10 25.5 7 23.5Z"
+            fill="url(#wingGradPassenger)" opacity="0.85" />
+          <defs>
+            <linearGradient id="wingGradPassenger" x1="1" y1="13" x2="42.5" y2="13" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#E5C98E" />
+              <stop offset="0.6" stop-color="#C6A66B" />
+              <stop offset="1" stop-color="#9C7838" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="logo-text-group">
+          <span class="logo-name">AeroVista</span>
+          <span class="logo-sub">AIRLINES</span>
+        </div>
+      </a>
+
+      <!-- Desktop Passenger Nav Links -->
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="search-results.html" class="nav-link">Flight Results</a>
+        <a href="seat-selection.html" class="nav-link">Seat Selection</a>
+        <a href="index.html#manage-booking-anchor" class="nav-link">Manage Booking</a>
+      </nav>
+
+      <!-- Auth Actions -->
+      <div class="nav-auth-group" id="navAuthGroup">
+        <a href="login.html" class="btn-auth-outline">
+          <svg class="icon-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span>Log In</span>
+        </a>
+        <a href="register.html" class="btn-auth-gold">Register</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Passenger Details Body -->
+  <main class="passenger-page-main">
+    <div class="passenger-page-container">
+
+      <!-- Navigation & Step Breadcrumb -->
+      <div class="passenger-top-nav-bar">
+        <a href="seat-selection.html" class="btn-back-seats" id="btnBackToSeats">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Back to Seat Selection</span>
+        </a>
+        <div class="step-breadcrumb-badge">
+          Step 7 of 8: Passenger Details
+        </div>
+      </div>
+
+      <!-- Header Strip -->
+      <div class="passenger-header-strip">
+        <div class="passenger-title-group">
+          <h1 id="passengerPageTitle">Passenger Manifest: <span class="gold-accent" id="routeAccent">Dubai to Mumbai</span></h1>
+          <div class="passenger-flight-meta" id="headerFlightMetaPills">
+            <!-- Dynamic header pills -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Layout: Passenger Forms (Left) + Booking Summary (Right) -->
+      <div class="passenger-layout">
+
+        <!-- Left Form Column -->
+        <section class="passenger-forms-container" aria-label="Passenger Details Form">
+
+          <!-- Logged In Account Pre-fill Banner (Visible if user logged in) -->
+          <div class="prefill-notice-banner" id="prefillNoticeBanner" style="display: none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <div>
+              Welcome back, <strong id="prefillUserName">Valued Passenger</strong>. We have prefilled Primary Passenger contact information from your AeroVista account. You may review and update any details below.
+            </div>
+          </div>
+
+          <!-- Dynamic Passenger Forms Injected Here -->
+          <form id="passengerDetailsForm" novalidate>
+            <div id="passengerCardsList">
+              <!-- Dynamically populated per passenger count -->
+            </div>
+
+            <div class="validation-alert-box" id="globalValidationAlert">
+              Please resolve the highlighted errors in the passenger forms before continuing.
+            </div>
+          </form>
+
+        </section>
+
+        <!-- Right Sticky Summary Sidebar -->
+        <aside class="passenger-summary-sidebar">
+
+          <div class="summary-card">
+            <div class="card-title-row">
+              <h3>Booking Summary</h3>
+              <span class="meta-pill" id="summaryPassengerCountPill">2 Passengers</span>
+            </div>
+
+            <!-- Flight and Route Information -->
+            <div class="summary-flight-meta" id="summaryFlightMeta">
+              <!-- Injected dynamically -->
+            </div>
+
+            <!-- Passenger Names & Assigned Seats -->
+            <div class="passenger-seat-list" id="summarySeatList">
+              <!-- Injected dynamically -->
+            </div>
+
+            <!-- Fare Separation Breakdown -->
+            <div class="fare-breakdown-block">
+              <div class="fare-row">
+                <span class="fare-label">Flight Ticket Fare:</span>
+                <span class="fare-value" id="summaryTicketFareVal">₹0</span>
+              </div>
+              <div class="fare-row">
+                <span class="fare-label">Additional Seat Charges:</span>
+                <span class="fare-value" id="summarySeatChargesVal">₹0</span>
+              </div>
+            </div>
+
+            <!-- Total Payable Amount -->
+            <div class="total-fare-row">
+              <span class="total-fare-label">Total Payable:</span>
+              <span class="total-fare-amt" id="summaryTotalPayableVal">₹0</span>
+            </div>
+
+            <!-- Continue to Payment Button -->
+            <button type="submit" form="passengerDetailsForm" class="btn-proceed-payment" id="btnContinuePayment">
+              <span>Continue to Payment</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+
+          </div>
+
+        </aside>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Step 8 Hand-Off / Confirmation Modal -->
+  <div class="modal-overlay" id="paymentTransitionModal">
+    <div class="modal-box">
+      <div class="modal-success-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+      </div>
+      <h3 class="modal-title">Passenger Details Saved</h3>
+      <p class="modal-desc">
+        All passenger identification and contact records have been verified and saved to <code>sessionStorage</code> for <strong>Step 8: Payment Gateway</strong>.
+      </p>
+
+      <div class="modal-summary-card" id="modalPassengerBreakdown">
+        <!-- Injected dynamically -->
+      </div>
+
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <button type="button" class="modal-close-btn" id="btnModifyPassengerDetails"
+          style="background: transparent; border: 1px solid rgba(255,255,255,0.25); color: #fff;">Review Details</button>
+        <button type="button" class="modal-close-btn" id="btnProceedStep8"
+          style="background: var(--color-gold); color: #121212;">Proceed to Payment (Step 8)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Passenger-Facing Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-bottom"
+        style="border-top: 1px solid rgba(198,166,107,0.2); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+        <p class="copyright-text" style="color: var(--color-text-muted); font-size: 0.85rem;">
+          &copy; 2026 AeroVista Airlines. All rights reserved. Precision luxury flight reservation system.
+        </p>
+        <div class="footer-legal-links" style="display: flex; gap: 20px; font-size: 0.82rem;">
+          <a href="index.html" style="color: var(--color-gold); text-decoration: none; font-weight: 500;">Return to Home</a>
+          <a href="search-results.html" style="color: var(--color-text-muted); text-decoration: none; font-weight: 500;">Flight Results</a>
+          <a href="seat-selection.html" style="color: var(--color-text-muted); text-decoration: none; font-weight: 500;">Seat Selection</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/passenger-details.js"></script>
+  <script src="js/session-nav.js"></script>
+</body>
+
+</html>
+

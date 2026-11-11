@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="AeroVista Airlines - Cancel your flight reservation, review the refund policy, and release seat assignments.">
+  <title>Cancel Booking | AeroVista Airlines</title>
+
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Core Theme & Page Specific Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cancel-booking.css">
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo" aria-label="AeroVista Airlines Home">
+        <svg class="gold-wing-icon" viewBox="0 0 44 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1.5 22C10 22 17 17 24 10C29 5 35 1.5 42.5 0.5C36 4.5 30 11 25.5 16C19 23.5 10 25.5 1.5 22Z"
+            fill="url(#wingGradCancel)" />
+          <path d="M7 23.5C13 23 19 19.5 24.5 14C28 10.5 33 8 38 6.5C32.5 10.5 27 16 23 20C17.5 25.5 10 25.5 7 23.5Z"
+            fill="url(#wingGradCancel)" opacity="0.85" />
+          <defs>
+            <linearGradient id="wingGradCancel" x1="1" y1="13" x2="42.5" y2="13" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#E5C98E" />
+              <stop offset="0.6" stop-color="#C6A66B" />
+              <stop offset="1" stop-color="#9C7838" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="logo-text-group">
+          <span class="logo-name">AeroVista</span>
+          <span class="logo-sub">AIRLINES</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="search-results.html" class="nav-link">Flight Results</a>
+        <a href="manage-booking.html" class="nav-link">Manage Booking</a>
+      </nav>
+
+      <!-- Return Link -->
+      <div>
+        <a href="manage-booking.html" class="btn-nav-back" id="navReturnManage">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          <span>Return to Manage Booking</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Body -->
+  <main class="cancel-page-main">
+    <div class="cancel-container">
+
+      <!-- Header Strip -->
+      <div class="cancel-header-strip">
+        <div class="cancel-title-group">
+          <h1>Cancel Booking Request</h1>
+          <p>Review your itinerary, cancellation refund terms and confirm your reservation cancellation.</p>
+        </div>
+      </div>
+
+      <!-- No Booking Found State (if visited without valid booking) -->
+      <div class="cancel-card" id="noBookingStateCard" style="display: none; text-align: center; padding: 48px 24px;">
+        <h2 style="font-family: var(--font-serif); color: var(--color-gold-light); margin-bottom: 12px;">No Reservation Selected</h2>
+        <p style="color: var(--color-text-muted); max-width: 500px; margin: 0 auto 24px;">Please look up your flight reservation first using the Manage Booking portal to initiate a cancellation.</p>
+        <a href="manage-booking.html" class="btn-danger-cancel" style="background: linear-gradient(135deg, #C6A66B 0%, #9C7838 100%);">
+          Find Reservation
+        </a>
+      </div>
+
+      <!-- Active Content Container -->
+      <div id="cancelMainContent">
+
+        <!-- 1. Post-Cancellation Success Card (Hidden until cancellation is confirmed) -->
+        <div class="cancelled-notice-card" id="cancelledSuccessCard">
+          <div class="cancel-check-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <h2 class="cancelled-title">Reservation Successfully Cancelled</h2>
+          <p class="cancelled-desc">
+            Your booking has been officially cancelled. All assigned seats have been released back into available airline inventory. A notification has been registered for this demonstration reservation.
+          </p>
+          <div class="cancellation-ref-box">
+            <span>Cancellation Reference / PNR</span>
+            <strong id="cancelledPnrDisplay">AV-XXXXXX</strong>
+          </div>
+          <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+            <a href="manage-booking.html" class="btn-nav-back" style="background: rgba(198,166,107,0.15); border-color: var(--color-gold);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <span>Verify in Manage Booking</span>
+            </a>
+            <a href="index.html" class="btn-nav-back">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              </svg>
+              <span>Back to Home</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. Booking Summary Card -->
+        <section class="cancel-card danger-edge" id="bookingSummaryCard">
+          <h2 class="card-heading">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <span>Reservation Details</span>
+          </h2>
+
+          <div class="summary-grid">
+            <div class="summary-item">
+              <span class="summary-label">Booking Reference / PNR</span>
+              <span class="summary-value highlight" id="sumPnr">AV-XXXXXX</span>
+            </div>
+
+            <div class="summary-item">
+              <span class="summary-label">Current Booking Status</span>
+              <div>
+                <span class="status-pill confirmed" id="sumStatusPill">Confirmed</span>
+              </div>
+            </div>
+
+            <div class="summary-item">
+              <span class="summary-label">Flight &amp; Airline</span>
+              <span class="summary-value" id="sumFlight">AeroVista AV-801</span>
+            </div>
+
+            <div class="summary-item">
+              <span class="summary-label">Route</span>
+              <span class="summary-value" id="sumRoute">DXB → BOM</span>
+            </div>
+
+            <div class="summary-item">
+              <span class="summary-label">Departure Date &amp; Time</span>
+              <span class="summary-value" id="sumDeparture">19 Nov 2026 • 13:10</span>
+            </div>
+
+            <div class="summary-item">
+              <span class="summary-label">Total Amount Paid</span>
+              <span class="summary-value" id="sumTotalPaid" style="color: var(--color-gold-light);">₹0</span>
+            </div>
+          </div>
+
+          <!-- Passenger and Seat Allocation Manifest -->
+          <div class="passengers-manifest-list" id="passengersManifestContainer">
+            <!-- Dynamically injected -->
+          </div>
+        </section>
+
+        <!-- 3. Cancellation Policy & Refund Terms -->
+        <section class="cancel-card">
+          <h2 class="card-heading">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <span>Cancellation Policy &amp; Refund Terms</span>
+          </h2>
+
+          <div class="policy-box">
+            <div class="demo-policy-badge">Demonstration Policy Notice</div>
+            <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 14px;">
+              This system operates in an airline simulation environment. Applicable refund calculations and fee structures are governed by the simulated fare rules below:
+            </p>
+
+            <ul class="policy-list">
+              <li>
+                <strong>Cancellation Window:</strong> Free cancellation is permitted up to 24 hours prior to scheduled flight departure. A standard airline processing fee of ₹500 per passenger applies thereafter.
+              </li>
+              <li>
+                <strong>Seat Selection Fee Refund:</strong> Optional seat charges (Extra Legroom ₹500, Exit Row ₹700) are fully refundable to the original payment channel.
+              </li>
+              <li>
+                <strong>Refund Processing Timeline:</strong> Refunds are processed to the original payment method (Credit/Debit Card or UPI) within 5 to 7 simulated banking business days.
+              </li>
+              <li>
+                <strong>Seat Release:</strong> All reserved seat numbers will immediately be released and restored to the live seat map inventory for other travellers upon cancellation.
+              </li>
+            </ul>
+
+            <div class="refund-estimate-bar">
+              <div>
+                <div style="font-size: 0.8rem; color: var(--color-text-muted); text-transform: uppercase;">Estimated Refund Payable</div>
+                <div style="font-size: 0.84rem; color: #B0ADA6;">Status: <span id="refundStatusLabel" style="font-weight: 600; color: #2ECC71;">Pending Refund (100% Demonstrative)</span></div>
+              </div>
+              <div class="refund-amount-val" id="refundEstimateAmount">₹0</div>
+            </div>
+          </div>
+
+          <!-- Actions Strip -->
+          <div class="cancellation-actions-strip">
+            <a href="manage-booking.html" class="btn-nav-back" id="btnCancelGoBack">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+              <span>Keep Booking &amp; Return</span>
+            </a>
+
+            <button type="button" class="btn-danger-cancel" id="btnTriggerCancelModal">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+              </svg>
+              <span>Cancel Booking</span>
+            </button>
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Confirmation Dialog Modal -->
+  <div class="modal-overlay" id="confirmCancelModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="confirm-modal-card">
+      <div class="modal-warning-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+          <line x1="12" y1="9" x2="12" y2="13"></line>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+      </div>
+
+      <h3 id="modalTitle" style="font-family: var(--font-serif); font-size: 1.5rem; color: #F5F2EB; margin-bottom: 8px;">
+        Confirm Cancellation?
+      </h3>
+
+      <p style="font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 8px;">
+        Are you sure you want to cancel booking <strong id="modalPnrConfirm" style="color: var(--color-gold-light);">AV-XXXXXX</strong>?
+      </p>
+
+      <p style="font-size: 0.82rem; color: #D9534F; line-height: 1.4;">
+        This action cannot be undone. All reserved seats will be immediately released.
+      </p>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-modal-dismiss" id="btnDismissCancelModal">
+          Keep My Booking
+        </button>
+
+        <button type="button" class="btn-danger-cancel" id="btnConfirmFinalCancellation" style="padding: 11px 22px;">
+          Yes, Cancel Booking
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-bottom" style="border-top: 1px solid rgba(198,166,107,0.2); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+        <p class="copyright-text" style="color: var(--color-text-muted); font-size: 0.85rem;">
+          &copy; 2026 AeroVista Airlines. All rights reserved. Precision luxury flight reservation system.
+        </p>
+        <div class="footer-legal-links" style="display: flex; gap: 20px; font-size: 0.82rem;">
+          <a href="index.html" style="color: var(--color-gold); text-decoration: none; font-weight: 500;">Home</a>
+          <a href="manage-booking.html" style="color: var(--color-text-muted); text-decoration: none; font-weight: 500;">Manage Booking</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/cancel-booking.js"></script>
+</body>
+
+</html>
+

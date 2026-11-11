@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="AeroVista Airlines - Experience luxury, seamless flight booking and unforgettable journeys worldwide.">
+  <title>AeroVista Airlines | Your Journey. Our Destination.</title>
+
+  <!-- Google Fonts: Cormorant Garamond / Playfair Display & Montserrat / Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo" aria-label="AeroVista Airlines Home">
+        <svg class="gold-wing-icon" viewBox="0 0 44 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1.5 22C10 22 17 17 24 10C29 5 35 1.5 42.5 0.5C36 4.5 30 11 25.5 16C19 23.5 10 25.5 1.5 22Z"
+            fill="url(#wingGrad)" />
+          <path d="M7 23.5C13 23 19 19.5 24.5 14C28 10.5 33 8 38 6.5C32.5 10.5 27 16 23 20C17.5 25.5 10 25.5 7 23.5Z"
+            fill="url(#wingGrad)" opacity="0.85" />
+          <defs>
+            <linearGradient id="wingGrad" x1="1" y1="13" x2="42.5" y2="13" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#E5C98E" />
+              <stop offset="0.6" stop-color="#C6A66B" />
+              <stop offset="1" stop-color="#9C7838" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="logo-text-group">
+          <span class="logo-name">AeroVista</span>
+          <span class="logo-sub">AIRLINES</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#booking-section" class="nav-link" id="nav-book-flights">Book Flights</a>
+        <a href="#manage-booking-anchor" class="nav-link" id="nav-manage-booking">Manage Booking</a>
+      </nav>
+
+      <!-- Auth Actions -->
+      <div class="nav-auth-group">
+        <a href="login.html" class="btn-auth-outline" id="nav-login-btn">
+          <svg class="icon-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span>Log In</span>
+        </a>
+        <a href="register.html" class="btn-auth-gold" id="nav-register-btn">Register</a>
+
+        <!-- Mobile menu toggle button -->
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div class="mobile-nav-panel" id="mobileNavPanel">
+      <a href="#hero" class="mobile-nav-link active">Home</a>
+      <a href="#booking-section" class="mobile-nav-link">Book Flights</a>
+      <a href="#manage-booking-anchor" class="mobile-nav-link">Manage Booking</a>
+      <div class="mobile-auth-divider"></div>
+      <a href="login.html" class="mobile-nav-link">Log In</a>
+      <a href="register.html" class="mobile-nav-link mobile-btn-gold">Register</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <!-- Dark gradient overlay & realistic aviation backdrop -->
+    <div class="hero-backdrop-layer"></div>
+    <div class="hero-light-glow"></div>
+
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1 class="hero-title">Your Journey.<br>Our Destination.</h1>
+        <p class="hero-subtitle">
+          Book flights, manage your trips and explore the world with AeroVista. Experience seamless flight booking and
+          unforgettable luxury in every sky.
+        </p>
+        <div class="hero-action-row">
+          <a href="#booking-section" class="btn-hero-book" id="heroBookBtn">
+            <span>Book a Flight</span>
+            <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prominent Booking Search Card overlapping bottom of hero -->
+    <div class="booking-section-wrapper" id="booking-section">
+      <div class="booking-card">
+        <!-- Top Booking Tabs: Book a Flight & Manage Booking -->
+        <div class="booking-tab-header">
+          <button type="button" class="booking-tab active" id="tabBookFlight">
+            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.3c.4-.2.6-.6.5-1.1z" />
+            </svg>
+            <span>Book a Flight</span>
+          </button>
+          <button type="button" class="booking-tab" id="tabManageBooking">
+            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>Manage Booking</span>
+          </button>
+        </div>
+
+        <!-- Form 1: Book a Flight Form -->
+        <form id="flightSearchForm" class="flight-search-form" novalidate>
+
+          <!-- Trip Type & Class Sub-bar -->
+          <div class="search-options-row">
+            <!-- Trip Type Radio Pills -->
+            <div class="trip-type-group" role="radiogroup" aria-label="Trip Type">
+              <label class="trip-radio-label">
+                <input type="radio" name="tripType" value="one-way" id="tripOneWay" checked>
+                <span class="trip-radio-custom"></span>
+                <span class="trip-radio-text">One-way</span>
+              </label>
+              <label class="trip-radio-label">
+                <input type="radio" name="tripType" value="round-trip" id="tripRoundTrip">
+                <span class="trip-radio-custom"></span>
+                <span class="trip-radio-text">Round-trip</span>
+              </label>
+            </div>
+
+            <!-- Cabin Class Dropdown -->
+            <div class="cabin-class-select-box">
+              <label for="cabinClassSelect" class="sr-only">Cabin Class</label>
+              <select id="cabinClassSelect" name="cabinClass" class="custom-select-control">
+                <option value="Economy" selected>Economy Class</option>
+                <option value="Business">Business Class</option>
+                <option value="First">First Class</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Main Input Fields Grid: From, Swap, To, Departure, Return, Passenger, Submit -->
+          <div class="flight-fields-grid" id="flightFieldsGrid">
+
+            <!-- Origin / From -->
+            <div class="field-item field-airport" id="fromFieldContainer">
+              <label class="field-label" for="fromCityInput">From</label>
+              <div class="field-input-box">
+                <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <input type="text" id="fromCityInput" name="fromCity" class="field-text-input"
+                  placeholder="Select origin city" autocomplete="off" spellcheck="false" required>
+                <!-- Autocomplete Dropdown Menu -->
+                <div class="city-dropdown" id="fromCityDropdown" role="listbox"></div>
+              </div>
+              <span class="field-error-msg" id="fromError"></span>
+            </div>
+
+            <!-- Swap Cities Button -->
+            <button type="button" class="btn-swap-cities" id="swapCitiesBtn" title="Swap origin and destination"
+              aria-label="Swap origin and destination">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M7 16V4M7 4L3 8M7 4L11 8M17 8v12M17 20l4-4M17 20l-4-4" />
+              </svg>
+            </button>
+
+            <!-- Destination / To -->
+            <div class="field-item field-airport" id="toFieldContainer">
+              <label class="field-label" for="toCityInput">To</label>
+              <div class="field-input-box">
+                <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <input type="text" id="toCityInput" name="toCity" class="field-text-input"
+                  placeholder="Select destination" autocomplete="off" spellcheck="false" required>
+                <!-- Autocomplete Dropdown Menu -->
+                <div class="city-dropdown" id="toCityDropdown" role="listbox"></div>
+              </div>
+              <span class="field-error-msg" id="toError"></span>
+            </div>
+
+            <!-- Departure Date -->
+            <div class="field-item field-date" id="deptDateFieldContainer">
+              <label class="field-label" for="deptDateInput">Departure Date</label>
+              <div class="field-input-box">
+                <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <input type="date" id="deptDateInput" name="departureDate" class="field-text-input date-input" required>
+              </div>
+              <span class="field-error-msg" id="deptError"></span>
+            </div>
+
+            <!-- Return Date (Dynamically displayed for Round-Trip) -->
+            <div class="field-item field-date is-hidden" id="returnDateFieldContainer">
+              <label class="field-label" for="returnDateInput">Return Date</label>
+              <div class="field-input-box">
+                <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <input type="date" id="returnDateInput" name="returnDate" class="field-text-input date-input">
+              </div>
+              <span class="field-error-msg" id="returnError"></span>
+            </div>
+
+            <!-- Passengers Picker Button & Dropdown Popover -->
+            <div class="field-item field-passengers" id="passengersFieldContainer">
+              <label class="field-label">Passengers</label>
+              <button type="button" class="field-input-box passenger-toggle-btn" id="passengerToggleBtn"
+                aria-expanded="false" aria-haspopup="true">
+                <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="passenger-display-text" id="passengerDisplayText">1 Passenger</span>
+                <svg class="field-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <span class="field-error-msg" id="passengerError"></span>
+
+              <!-- Passenger Increment/Decrement Counter Popover -->
+              <div class="passenger-popover" id="passengerPopover">
+                <div class="passenger-row">
+                  <div class="passenger-meta">
+                    <span class="type-name">Adults</span>
+                    <span class="type-desc">Age 12+ years</span>
+                  </div>
+                  <div class="counter-actions">
+                    <button type="button" class="btn-counter" id="decAdults" aria-label="Decrease adults"
+                      disabled>−</button>
+                    <span class="counter-value" id="countAdults">1</span>
+                    <button type="button" class="btn-counter" id="incAdults" aria-label="Increase adults">+</button>
+                  </div>
+                </div>
+
+                <div class="passenger-row">
+                  <div class="passenger-meta">
+                    <span class="type-name">Children</span>
+                    <span class="type-desc">Age 2 - 11 years</span>
+                  </div>
+                  <div class="counter-actions">
+                    <button type="button" class="btn-counter" id="decChildren" aria-label="Decrease children"
+                      disabled>−</button>
+                    <span class="counter-value" id="countChildren">0</span>
+                    <button type="button" class="btn-counter" id="incChildren" aria-label="Increase children">+</button>
+                  </div>
+                </div>
+
+                <div class="passenger-row">
+                  <div class="passenger-meta">
+                    <span class="type-name">Infants</span>
+                    <span class="type-desc">Under 2 years (on lap)</span>
+                  </div>
+                  <div class="counter-actions">
+                    <button type="button" class="btn-counter" id="decInfants" aria-label="Decrease infants"
+                      disabled>−</button>
+                    <span class="counter-value" id="countInfants">0</span>
+                    <button type="button" class="btn-counter" id="incInfants" aria-label="Increase infants">+</button>
+                  </div>
+                </div>
+
+                <div class="passenger-popover-footer">
+                  <button type="button" class="btn-done-passenger" id="donePassengerBtn">Done</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="field-item field-submit">
+              <button type="submit" class="btn-search-flights" id="searchFlightsBtn">
+                <span>Search Flights</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Notification Banner for Global Search Validation / Success Messages -->
+          <div class="form-alert" id="formAlertMessage" role="alert" style="display: none;"></div>
+        </form>
+
+        <!-- Form 2: Manage Booking Panel (Prepared for Phase 2, accessible via Tab) -->
+        <div id="manageBookingPanel" class="manage-booking-view" style="display: none;">
+          <div class="manage-intro">
+            <h3 class="manage-title">Retrieve Your Booking</h3>
+            <p class="manage-desc">Enter your booking reference or e-ticket number and passenger last name to view or
+              modify your flight itinerary.</p>
+          </div>
+          <div class="manage-form-row">
+            <div class="field-item">
+              <label class="field-label" for="bookingRefInput">Booking Reference / PNR</label>
+              <div class="field-input-box">
+                <input type="text" id="bookingRefInput" class="field-text-input uppercase-text"
+                  placeholder="e.g. AV-9842" maxlength="10">
+              </div>
+            </div>
+            <div class="field-item">
+              <label class="field-label" for="passengerLastNameInput">Passenger Last Name</label>
+              <div class="field-input-box">
+                <input type="text" id="passengerLastNameInput" class="field-text-input" placeholder="e.g. Smith">
+              </div>
+            </div>
+            <div class="field-item field-submit">
+              <button type="button" class="btn-search-flights" id="findBookingBtn">
+                <span>Find Booking</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Anchor for Manage Booking Nav link -->
+  <div id="manage-booking-anchor"></div>
+
+  <!-- Trust Bar / Key Highlights (as shown in reference image) -->
+  <section class="trust-highlights-bar">
+    <div class="trust-container">
+      <div class="trust-item">
+        <div class="trust-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path
+              d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.3c.4-.2.6-.6.5-1.1z" />
+          </svg>
+        </div>
+        <div class="trust-text">
+          <h4 class="trust-title">Wide Network</h4>
+          <p class="trust-desc">Connect to major cities worldwide with over 150 international routes.</p>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M6 19v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3"></path>
+            <path d="M5 19h14"></path>
+            <path d="M8 8a3 3 0 1 1 6 0 3 3 0 0 1-6 0Z"></path>
+            <path d="M19 11v-2a2 2 0 0 0-2-2"></path>
+            <path d="M5 11v-2a2 2 0 0 1 2-2"></path>
+          </svg>
+        </div>
+        <div class="trust-text">
+          <h4 class="trust-title">Comfort & Care</h4>
+          <p class="trust-desc">A relaxed and enjoyable travel experience with world-class hospitality.</p>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <polyline points="9 12 11 14 15 10"></polyline>
+          </svg>
+        </div>
+        <div class="trust-text">
+          <h4 class="trust-title">Safe & Reliable</h4>
+          <p class="trust-desc">Your safety is our top priority with industry-leading standards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Destinations Section -->
+  <section class="destinations-section" id="featured-destinations">
+    <div class="dest-container">
+      <div class="section-header">
+        <span class="section-tagline">EXPLORE THE EXTRAORDINARY</span>
+        <h2 class="section-title">Featured Destinations</h2>
+        <div class="gold-divider"></div>
+        <p class="section-desc">
+          Immerse yourself in handpicked global destinations. Discover vibrant skylines, historic landmarks, and
+          tranquil coastlines with AeroVista.
+        </p>
+      </div>
+
+      <div class="destinations-grid">
+        <!-- Destination Card 1: Dubai -->
+        <article class="destination-card">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80"
+              alt="Burj Khalifa and Dubai city skyline" class="card-img" loading="lazy">
+            <div class="card-overlay"></div>
+            <span class="flight-tag">Popular Route</span>
+          </div>
+          <div class="card-content">
+            <div class="dest-geo">
+              <h3 class="dest-city">Dubai</h3>
+              <span class="dest-country">United Arab Emirates</span>
+            </div>
+            <p class="dest-blurb">Futuristic architecture, luxury desert safaris, and vibrant high-end shopping.</p>
+            <div class="card-footer">
+              <a href="#booking-section" class="btn-quick-select" data-destination="DXB">Book Flight &rarr;</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Destination Card 2: London -->
+        <article class="destination-card">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80"
+              alt="Tower Bridge and London City" class="card-img" loading="lazy">
+            <div class="card-overlay"></div>
+            <span class="flight-tag">Historic Gem</span>
+          </div>
+          <div class="card-content">
+            <div class="dest-geo">
+              <h3 class="dest-city">London</h3>
+              <span class="dest-country">United Kingdom</span>
+            </div>
+            <p class="dest-blurb">Royal heritage, iconic museums, timeless theatre, and world-renowned culture.</p>
+            <div class="card-footer">
+              <a href="#booking-section" class="btn-quick-select" data-destination="LHR">Book Flight &rarr;</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Destination Card 3: Tokyo -->
+        <article class="destination-card">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80"
+              alt="Tokyo cityscape and illuminated street at night" class="card-img" loading="lazy">
+            <div class="card-overlay"></div>
+            <span class="flight-tag">Trending</span>
+          </div>
+          <div class="card-content">
+            <div class="dest-geo">
+              <h3 class="dest-city">Tokyo</h3>
+              <span class="dest-country">Japan</span>
+            </div>
+            <p class="dest-blurb">A vibrant harmony of ultra-modern neon-lit streets and ancient serene temples.</p>
+            <div class="card-footer">
+              <a href="#booking-section" class="btn-quick-select" data-destination="HND">Book Flight &rarr;</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Destination Card 4: Paris -->
+        <article class="destination-card">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80"
+              alt="Eiffel Tower Paris scenic view" class="card-img" loading="lazy">
+            <div class="card-overlay"></div>
+            <span class="flight-tag">Romantic Escapes</span>
+          </div>
+          <div class="card-content">
+            <div class="dest-geo">
+              <h3 class="dest-city">Paris</h3>
+              <span class="dest-country">France</span>
+            </div>
+            <p class="dest-blurb">The global epicentre of art, haute couture, culinary artistry, and timeless elegance.
+            </p>
+            <div class="card-footer">
+              <a href="#booking-section" class="btn-quick-select" data-destination="CDG">Book Flight &rarr;</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Experience Callout -->
+  <section class="experience-showcase">
+    <div class="showcase-container">
+      <div class="showcase-content">
+        <span class="section-tagline">THE AEROVISTA STANDARD</span>
+        <h2 class="showcase-heading">Elevate Every Mile Above the Clouds</h2>
+        <p class="showcase-text">
+          From spacious lie-flat suites in First Class to bespoke culinary delicacies prepared by master chefs, every
+          detail of your flight is tailored for uncompromising luxury and peace of mind.
+        </p>
+        <div class="showcase-perks">
+          <div class="perk-pill"><span>✓</span> 4K Inflight Entertainment</div>
+          <div class="perk-pill"><span>✓</span> High-Speed Satellite Wi-Fi</div>
+          <div class="perk-pill"><span>✓</span> Dedicated VIP Lounge Access</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <!-- Brand Summary -->
+        <div class="footer-col brand-col">
+          <div class="brand-logo footer-logo">
+            <svg class="gold-wing-icon" viewBox="0 0 44 26" fill="none">
+              <path d="M1.5 22C10 22 17 17 24 10C29 5 35 1.5 42.5 0.5C36 4.5 30 11 25.5 16C19 23.5 10 25.5 1.5 22Z"
+                fill="url(#wingGradFooter)" />
+              <defs>
+                <linearGradient id="wingGradFooter" x1="1" y1="13" x2="42.5" y2="13" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#E5C98E" />
+                  <stop offset="1" stop-color="#C6A66B" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="logo-text-group">
+              <span class="logo-name">AeroVista</span>
+              <span class="logo-sub">AIRLINES</span>
+            </div>
+          </div>
+          <p class="footer-about">
+            AeroVista Airlines offers quintessential luxury air travel, world-class comfort, and unmatched safety across
+            five continents.
+          </p>
+          <div class="footer-socials">
+            <span class="social-label">Follow our flight path:</span>
+            <div class="social-icons">
+              <a href="#" aria-label="Facebook" class="social-link">FB</a>
+              <a href="#" aria-label="Instagram" class="social-link">IG</a>
+              <a href="#" aria-label="Twitter / X" class="social-link">X</a>
+              <a href="#" aria-label="LinkedIn" class="social-link">IN</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h3 class="footer-heading">About AeroVista</h3>
+          <ul class="footer-links">
+            <li><a href="#hero">Our Story</a></li>
+            <li><a href="#featured-destinations">Fleet & Cabins</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Sustainability</a></li>
+            <li><a href="#">Media Center</a></li>
+          </ul>
+        </div>
+
+        <!-- Support & Booking -->
+        <div class="footer-col">
+          <h3 class="footer-heading">Manage & Help</h3>
+          <ul class="footer-links">
+            <li><a href="#manage-booking-anchor">Manage Reservations</a></li>
+            <li><a href="#booking-section">Flight Schedules</a></li>
+            <li><a href="#">Baggage Allowance</a></li>
+            <li><a href="#">Special Assistance</a></li>
+            <li><a href="#">Check-in Information</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact & Legal -->
+        <div class="footer-col">
+          <h3 class="footer-heading">Contact & Legal</h3>
+          <ul class="footer-contact-list">
+            <li><strong>24/7 Concierge:</strong> +1 (800) 555-AERO</li>
+            <li><strong>Email:</strong> support@aerovista-airlines.com</li>
+            <li><strong>HQ:</strong> Aviation Blvd, Terminal 4, World Gateway</li>
+          </ul>
+          <ul class="footer-legal-links">
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Cookie Preferences</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p class="copyright-text">
+          &copy; 2026 AeroVista Airlines. All rights reserved.
+        </p>
+        <p class="disclaimer-text">
+          Official AeroVista Booking Portal.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/session-nav.js"></script>
+</body>
+
+</html>

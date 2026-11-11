@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AeroVista Airlines - Internal Flight Operations & Administration Dashboard">
+  <title>Admin Dashboard | AeroVista Airlines</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Core & Admin Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body class="admin-body">
+
+  <!-- 1. Dedicated Admin Sidebar Navigation -->
+  <aside class="admin-sidebar" id="adminSidebar">
+    <div class="admin-sidebar-header">
+      <a href="index.html" class="brand-logo" aria-label="AeroVista Main Website">
+        <svg class="gold-wing-icon" viewBox="0 0 44 26" fill="none">
+          <path d="M1.5 22C10 22 17 17 24 10C29 5 35 1.5 42.5 0.5C36 4.5 30 11 25.5 16C19 23.5 10 25.5 1.5 22Z"
+            fill="url(#wingGradAdminDash)" />
+          <path d="M7 23.5C13 23 19 19.5 24.5 14C28 10.5 33 8 38 6.5C32.5 10.5 27 16 23 20C17.5 25.5 10 25.5 7 23.5Z"
+            fill="url(#wingGradAdminDash)" opacity="0.85" />
+          <defs>
+            <linearGradient id="wingGradAdminDash" x1="1" y1="13" x2="42.5" y2="13" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#E5C98E" />
+              <stop offset="0.6" stop-color="#C6A66B" />
+              <stop offset="1" stop-color="#9C7838" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="logo-text-group">
+          <span class="logo-name">AeroVista</span>
+          <span class="logo-sub">ADMIN PORTAL</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Navigation Menu Items -->
+    <nav class="admin-sidebar-nav" aria-label="Admin Navigation">
+      <span class="sidebar-category-label">Overview</span>
+      <a href="#dashboard" class="admin-nav-item active" data-target="dashboard-view">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+        <span>Dashboard</span>
+      </a>
+
+      <span class="sidebar-category-label">Management</span>
+      <a href="#flights" class="admin-nav-item" data-target="flight-mgmt-view">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path
+            d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.3c.4-.2.6-.6.5-1.1z" />
+        </svg>
+        <span>Flight Management</span>
+      </a>
+
+      <a href="#bookings" class="admin-nav-item" data-target="booking-mgmt-view">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        <span>Booking Management</span>
+      </a>
+
+      <a href="#passengers" class="admin-nav-item" data-target="passenger-mgmt-view">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </svg>
+        <span>Passenger Management</span>
+      </a>
+
+      <a href="#settings" class="admin-nav-item" data-target="settings-mgmt-view" id="navAdminSettings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path
+            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+          </path>
+        </svg>
+        <span>Admin Security</span>
+      </a>
+    </nav>
+
+    <!-- Footer Controls -->
+    <div class="admin-sidebar-footer">
+      <a href="index.html" class="admin-nav-item" title="Exit to passenger site">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>Back to Website</span>
+      </a>
+        <a href="#" class="admin-nav-item nav-item-logout" id="btnAdminLogout" title="Sign out of administration">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          <span>Logout</span>
+        </a>
+    </div>
+  </aside>
+
+  <!-- 2. Main Administration Wrapper -->
+  <div class="admin-main-wrapper">
+
+    <!-- Top Sticky Bar -->
+    <header class="admin-topbar">
+      <div class="topbar-left">
+        <button type="button" class="btn-sidebar-toggle" id="sidebarToggleBtn" aria-label="Toggle navigation menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" style="width: 22px; height: 22px;">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+        <h1 class="topbar-page-title" id="topbarPageTitle">Flight Operations Dashboard</h1>
+      </div>
+
+      <div class="topbar-right">
+        <div class="admin-status-badge">
+          <span class="status-dot-pulse"></span>
+          <span>Operations Live</span>
+        </div>
+        <div class="admin-user-profile">
+          <div class="admin-avatar">AD</div>
+          <div class="admin-user-meta">
+            <span class="admin-user-name">Chief Controller</span>
+            <span class="admin-user-role">Flight Operations Hub</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Dynamic Content Views -->
+    <main class="admin-content-area">
+
+      <!-- VIEW 1: Dashboard Overview (Default) -->
+      <section class="view-section active" id="dashboard-view" aria-labelledby="topbarPageTitle">
+
+        <!-- Summary Metric Cards -->
+        <div class="metrics-grid">
+          <!-- Total Flights -->
+          <div class="metric-card">
+            <div class="metric-info">
+              <span class="metric-title">Total Flights</span>
+              <span class="metric-value" id="dashTotalFlights">0</span>
+              <span class="metric-trend" id="dashFlightsTrend">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  style="width:14px; height:14px;">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                  <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
+                <span id="dashFlightsTrendText">+0 scheduled today</span>
+              </span>
+            </div>
+            <div class="metric-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.3c.4-.2.6-.6.5-1.1z" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Total Bookings -->
+          <div class="metric-card">
+            <div class="metric-info">
+              <span class="metric-title">Total Bookings</span>
+              <span class="metric-value" id="dashTotalBookings">0</span>
+              <span class="metric-trend" id="dashBookingsTrend">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  style="width:14px; height:14px;">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                  <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
+                <span id="dashBookingsTrendText">0 confirmed bookings</span>
+              </span>
+            </div>
+            <div class="metric-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Total Passengers -->
+          <div class="metric-card">
+            <div class="metric-info">
+              <span class="metric-title">Total Passengers</span>
+              <span class="metric-value" id="dashTotalPassengers">0</span>
+              <span class="metric-trend" id="dashPassengersTrend">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  style="width:14px; height:14px;">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                  <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
+                <span id="dashPassengersTrendText">0 booked passengers</span>
+              </span>
+            </div>
+            <div class="metric-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Available Seats -->
+          <div class="metric-card">
+            <div class="metric-info">
+              <span class="metric-title">Available Seats</span>
+              <span class="metric-value" id="dashAvailableSeats">0</span>
+              <span class="metric-trend" id="dashSeatsTrend" style="color:var(--color-champagne-light)">
+                Across all cabins
+              </span>
+            </div>
+            <div class="metric-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Booking Statistics Visual Chart -->
+        <div class="analytics-section-card">
+          <div class="section-card-header">
+            <div class="card-title-group">
+              <h2 class="card-main-title">Booking Statistics & Passenger Volume</h2>
+              <span class="card-sub-title" id="dashChartSubtitle">Weekly booking trends across global AeroVista international corridors</span>
+            </div>
+            <span class="demo-data-badge" id="dashChartBadge" style="background: rgba(46, 204, 113, 0.15); color: #2ECC71; border-color: rgba(46, 204, 113, 0.35);">Live Database Records</span>
+          </div>
+
+          <div class="chart-container">
+            <div class="booking-bars-chart" id="dashBookingChart" aria-label="Weekly Booking Statistics Bar Chart">
+              <!-- Dynamically populated from backend -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Tables Row: Recent Bookings & Upcoming Flights -->
+        <div class="dashboard-tables-grid">
+
+          <!-- Recent Bookings Table -->
+          <div class="data-table-card">
+            <div class="section-card-header">
+              <div class="card-title-group">
+                <h3 class="card-main-title">Recent Bookings</h3>
+                <span class="card-sub-title">Latest passenger itinerary confirmations</span>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="admin-data-table" aria-label="Recent Bookings">
+                <thead>
+                  <tr>
+                    <th>Ref</th>
+                    <th>Passenger</th>
+                    <th>Flight</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="dashRecentBookingsBody">
+                  <!-- Dynamically populated from backend -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Upcoming Flights Table -->
+          <div class="data-table-card">
+            <div class="section-card-header">
+              <div class="card-title-group">
+                <h3 class="card-main-title">Upcoming Flights</h3>
+                <span class="card-sub-title">Scheduled operations & seat inventory</span>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="admin-data-table" aria-label="Upcoming Flights">
+                <thead>
+                  <tr>
+                    <th>Flight</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Departure</th>
+                    <th>Available</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="dashUpcomingFlightsBody">
+                  <!-- Dynamically populated from backend -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- VIEW 2: Flight Management Section (Step 4) -->
+      <section class="view-section" id="flight-mgmt-view" aria-labelledby="mgmtHeading">
+        <!-- Header row with Title and Add Flight button -->
+        <div class="mgmt-header-row">
+          <div class="mgmt-title-group">
+            <h2 class="mgmt-title" id="mgmtHeading">Flight Management</h2>
+            <span class="mgmt-subtitle">Monitor, schedule, edit and manage commercial flight routes</span>
+          </div>
+          <button type="button" class="btn-add-flight" id="openAddFlightModalBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span>+ Add New Flight</span>
+          </button>
+        </div>
+
+        <!-- System Notification Banner -->
+        <div class="admin-toast-banner" id="adminToastBanner" role="alert" style="display: none;"></div>
+
+        <!-- Controls: Search & Filters -->
+        <div class="flight-controls-bar">
+          <!-- Search box -->
+          <div class="search-box-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="flightSearchInput" class="search-box-input"
+              placeholder="Search by flight number, origin, or destination..." autocomplete="off">
+          </div>
+
+          <!-- Source Filter -->
+          <div class="filter-select-wrap">
+            <select id="filterSourceSelect" class="filter-select-control" aria-label="Filter by Source">
+              <option value="">All Sources</option>
+            </select>
+          </div>
+
+          <!-- Destination Filter -->
+          <div class="filter-select-wrap">
+            <select id="filterDestSelect" class="filter-select-control" aria-label="Filter by Destination">
+              <option value="">All Destinations</option>
+            </select>
+          </div>
+
+          <!-- Status Filter -->
+          <div class="filter-select-wrap">
+            <select id="filterStatusSelect" class="filter-select-control" aria-label="Filter by Status">
+              <option value="">All Statuses</option>
+              <option value="Scheduled">Scheduled</option>
+              <option value="On Time">On Time</option>
+              <option value="Boarding">Boarding</option>
+              <option value="Delayed">Delayed</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+          </div>
+
+          <!-- Reset Filter Button -->
+          <button type="button" class="btn-reset-filters" id="btnResetFilters">Reset Filters</button>
+        </div>
+
+        <!-- Flight Records Card with Data Table -->
+        <div class="flight-records-card">
+          <div class="flight-table-toolbar">
+            <span class="table-records-count">Showing <strong id="flightCountText">0</strong> scheduled flights</span>
+            <span class="demo-data-badge">Synchronized Flight Inventory</span>
+          </div>
+
+          <div class="flight-table-container">
+            <table class="flight-data-table" id="flightsDataTable">
+              <thead>
+                <tr>
+                  <th>Flight Number</th>
+                  <th>Airline</th>
+                  <th>Source</th>
+                  <th>Destination</th>
+                  <th>Departure Date</th>
+                  <th>Dept Time</th>
+                  <th>Arr Time</th>
+                  <th>Duration</th>
+                  <th>Fare (₹)</th>
+                  <th>Total Seats</th>
+                  <th>Available</th>
+                  <th>Status</th>
+                  <th style="text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="flightsTableBody">
+                <!-- Injected dynamically by admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 3: Booking Management View -->
+      <section class="view-section" id="booking-mgmt-view" aria-labelledby="bookingMgmtHeading">
+        <!-- Header row with Title -->
+        <div class="mgmt-header-row">
+          <div class="mgmt-title-group">
+            <h2 class="mgmt-title" id="bookingMgmtHeading">Booking Management</h2>
+            <span class="mgmt-subtitle">Monitor, inspect, filter, and manage passenger flight reservations</span>
+          </div>
+          <div>
+            <span class="demo-data-badge">Synchronized Flight Reservations</span>
+          </div>
+        </div>
+
+        <!-- Booking Overview 4 Summary Cards -->
+        <div class="metrics-grid" style="margin-bottom: 1.5rem;">
+          <!-- Total Bookings -->
+          <div class="metric-card">
+            <div class="metric-info">
+              <span class="metric-title">Total Bookings</span>
+              <span class="metric-value" id="cardTotalBookings">0</span>
+              <span class="metric-trend" style="color: var(--color-champagne-light);">
+                All active &amp; historical
+              </span>
+            </div>
+            <div class="metric-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Confirmed Bookings -->
+          <div class="metric-card">
+            <div class="metric-info">
+              <span class="metric-title">Confirmed Bookings</span>
+              <span class="metric-value" id="cardConfirmedBookings" style="color: #2ECC71;">0</span>
+              <span class="metric-trend" style="color: #2ECC71;">
+                Ticketed &amp; Confirmed
+              </span>
+            </div>
+            <div class="metric-icon-wrap" style="color: #2ECC71; border-color: rgba(46, 204, 113, 0.3);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Pending Bookings -->
+          <div class="metric-card">
+            <div class="metric-info">
+              <span class="metric-title">Pending Bookings</span>
+              <span class="metric-value" id="cardPendingBookings" style="color: #F39C12;">0</span>
+              <span class="metric-trend" style="color: #F39C12;">
+                Awaiting payment
+              </span>
+            </div>
+            <div class="metric-icon-wrap" style="color: #F39C12; border-color: rgba(243, 156, 18, 0.3);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Cancelled Bookings -->
+          <div class="metric-card">
+            <div class="metric-info">
+              <span class="metric-title">Cancelled Bookings</span>
+              <span class="metric-value" id="cardCancelledBookings" style="color: #FF5A5F;">0</span>
+              <span class="metric-trend" style="color: #FF5A5F;">
+                Released / Refunded
+              </span>
+            </div>
+            <div class="metric-icon-wrap" style="color: #FF5A5F; border-color: rgba(255, 90, 95, 0.3);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls: Search & Filters -->
+        <div class="flight-controls-bar" style="margin-bottom: 1.25rem;">
+          <!-- Search box -->
+          <div class="search-box-wrap" style="flex: 2; min-width: 260px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="bookingSearchInput" class="search-box-input"
+              placeholder="Search by PNR, passenger name or flight number..." autocomplete="off">
+          </div>
+
+          <!-- Booking Status Filter -->
+          <div class="filter-select-wrap">
+            <select id="filterBookingStatus" class="filter-select-control" aria-label="Filter by Booking Status">
+              <option value="">All Booking Statuses</option>
+              <option value="Confirmed">Confirmed</option>
+              <option value="Pending">Pending</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+          </div>
+
+          <!-- Payment Status Filter -->
+          <div class="filter-select-wrap">
+            <select id="filterPaymentStatus" class="filter-select-control" aria-label="Filter by Payment Status">
+              <option value="">All Payment Statuses</option>
+              <option value="Paid">Paid</option>
+              <option value="Pending">Pending</option>
+              <option value="Refunded">Refunded</option>
+              <option value="Pending Refund">Pending Refund</option>
+            </select>
+          </div>
+
+          <!-- Travel Date Filter -->
+          <div class="filter-select-wrap">
+            <input type="date" id="filterTravelDate" class="filter-select-control" style="padding-right: 0.85rem;"
+              aria-label="Filter by Travel Date">
+          </div>
+
+          <!-- Reset Filter Button -->
+          <button type="button" class="btn-reset-filters" id="btnResetBookingFilters">Reset Filters</button>
+        </div>
+
+        <!-- Bookings Records Card with Data Table -->
+        <div class="flight-records-card">
+          <div class="flight-table-toolbar">
+            <span class="table-records-count">Showing <strong id="bookingCountText">0</strong> reservations</span>
+            <span class="demo-data-badge">Synchronized Shared Data</span>
+          </div>
+
+          <div class="flight-table-container">
+            <table class="flight-data-table" id="bookingsDataTable">
+              <thead>
+                <tr>
+                  <th>PNR / Reference</th>
+                  <th>Lead Passenger</th>
+                  <th>Flight Number</th>
+                  <th>Route (Src → Dst)</th>
+                  <th>Travel Date</th>
+                  <th>Passengers</th>
+                  <th>Total Amount</th>
+                  <th>Booking Status</th>
+                  <th>Payment Status</th>
+                  <th style="text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="bookingsTableBody">
+                <!-- Injected dynamically by admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 4: Passenger Management View -->
+      <section class="view-section" id="passenger-mgmt-view" aria-labelledby="passengerMgmtHeading">
+        <!-- Header row with Title -->
+        <div class="mgmt-header-row">
+          <div class="mgmt-title-group">
+            <h2 class="mgmt-title" id="passengerMgmtHeading">Passenger Management</h2>
+            <span class="mgmt-subtitle">Monitor, inspect, manage, and verify passenger profiles and manifest
+              accounts</span>
+          </div>
+          <div>
+            <span class="demo-data-badge">Synchronized Passenger Directory</span>
+          </div>
+        </div>
+
+        <!-- System Notification Banner for Passenger Actions -->
+        <div class="admin-toast-banner" id="passengerToastBanner" role="alert" style="display: none;"></div>
+
+        <!-- 4 Summary Cards -->
+        <div class="metrics-grid" style="margin-bottom: 1.5rem;">
+          <!-- Total Registered Passengers -->
+          <div class="metric-card">
+            <div class="metric-info">
+              <span class="metric-title">Total Registered Passengers</span>
+              <span class="metric-value" id="cardTotalPassengers">0</span>
+              <span class="metric-trend" style="color: var(--color-champagne-light);">
+                Demonstration accounts
+              </span>
+            </div>
+            <div class="metric-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Active Passengers -->
+          <div class="metric-card">
+            <div class="metric-info">
+              <span class="metric-title">Active Passengers</span>
+              <span class="metric-value" id="cardActivePassengers" style="color: #2ECC71;">0</span>
+              <span class="metric-trend" style="color: #2ECC71;">
+                Active &amp; Verified
+              </span>
+            </div>
+            <div class="metric-icon-wrap" style="color: #2ECC71; border-color: rgba(46, 204, 113, 0.3);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Total Bookings -->
+          <div class="metric-card">
+            <div class="metric-info">
+              <span class="metric-title">Total Bookings</span>
+              <span class="metric-value" id="cardPassengerTotalBookings"
+                style="color: var(--color-champagne-light);">0</span>
+              <span class="metric-trend" style="color: var(--color-champagne-light);">
+                Across all passengers
+              </span>
+            </div>
+            <div class="metric-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Recently Registered Passengers -->
+          <div class="metric-card">
+            <div class="metric-info">
+              <span class="metric-title">Recently Registered</span>
+              <span class="metric-value" id="cardRecentPassengers" style="color: #5DADE2;">0</span>
+              <span class="metric-trend" style="color: #5DADE2;">
+                Joined within 30 days
+              </span>
+            </div>
+            <div class="metric-icon-wrap" style="color: #5DADE2; border-color: rgba(93, 173, 226, 0.3);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls: Search & Filters -->
+        <div class="flight-controls-bar" style="margin-bottom: 1.25rem;">
+          <!-- Search box -->
+          <div class="search-box-wrap" style="flex: 2; min-width: 260px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="passengerSearchInput" class="search-box-input"
+              placeholder="Search by passenger name, email or phone number..." autocomplete="off">
+          </div>
+
+          <!-- Account Status Filter -->
+          <div class="filter-select-wrap">
+            <select id="filterAccountStatus" class="filter-select-control" aria-label="Filter by Account Status">
+              <option value="">All Account Statuses</option>
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+          </div>
+
+          <!-- Registration Date Filter -->
+          <div class="filter-select-wrap">
+            <input type="date" id="filterRegDate" class="filter-select-control" style="padding-right: 0.85rem;"
+              aria-label="Filter by Registration Date">
+          </div>
+
+          <!-- Reset Filter Button -->
+          <button type="button" class="btn-reset-filters" id="btnResetPassengerFilters">Reset Filters</button>
+        </div>
+
+        <!-- Passenger Records Card with Data Table -->
+        <div class="flight-records-card">
+          <div class="flight-table-toolbar">
+            <span class="table-records-count">Showing <strong id="passengerCountText">0</strong> registered
+              passengers</span>
+            <span class="demo-data-badge">Synchronized Directory</span>
+          </div>
+
+          <div class="flight-table-container">
+            <table class="flight-data-table" id="passengersDataTable">
+              <thead>
+                <tr>
+                  <th>Passenger ID</th>
+                  <th>Full Name</th>
+                  <th>Email Address</th>
+                  <th>Mobile Number</th>
+                  <th>Registration Date</th>
+                  <th>Total Bookings</th>
+                  <th>Account Status</th>
+                  <th style="text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="passengersTableBody">
+                <!-- Injected dynamically by admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 5: Admin Security & Credential Management -->
+      <section class="view-section" id="settings-mgmt-view" aria-labelledby="settingsHeading">
+        <div class="mgmt-header-row admin-security-header">
+          <div>
+            <h2 class="mgmt-title" id="settingsHeading">Administrator Security & Credentials</h2>
+            <span class="mgmt-subtitle">Update administrator username and access password securely</span>
+          </div>
+        </div>
+
+        <div class="admin-security-container">
+          <div class="flight-records-card admin-security-card">
+            <div id="credentialChangeAlert" class="auth-alert" style="display: none;"></div>
+
+            <form id="adminCredentialsForm" class="admin-security-form" novalidate>
+              <!-- Current Password (Required) -->
+              <div class="admin-security-form-group">
+                <label class="modal-label" for="currAdminPassword">Current Password <span
+                    style="color: var(--color-gold);">*</span></label>
+                <input type="password" id="currAdminPassword" class="modal-input-control"
+                  placeholder="Enter current admin password" required>
+                <span class="modal-error-msg" id="errCurrAdminPassword"></span>
+              </div>
+
+              <div class="admin-security-divider"></div>
+
+              <!-- New Username -->
+              <div class="admin-security-form-group">
+                <label class="modal-label" for="newAdminUsername">New Username (Optional)</label>
+                <input type="text" id="newAdminUsername" class="modal-input-control" placeholder="Enter new username">
+                <span class="modal-error-msg" id="errNewAdminUsername"></span>
+              </div>
+
+              <!-- New Password -->
+              <div class="admin-security-form-group">
+                <label class="modal-label" for="newAdminPassword">New Password (Min. 8 characters)</label>
+                <input type="password" id="newAdminPassword" class="modal-input-control" placeholder="Enter new password">
+                <span class="modal-error-msg" id="errNewAdminPassword"></span>
+              </div>
+
+              <!-- Confirm New Password -->
+              <div class="admin-security-form-group">
+                <label class="modal-label" for="confirmNewAdminPassword">Confirm New Password</label>
+                <input type="password" id="confirmNewAdminPassword" class="modal-input-control"
+                  placeholder="Confirm new password">
+                <span class="modal-error-msg" id="errConfirmNewAdminPassword"></span>
+              </div>
+
+              <div class="admin-security-actions">
+                <button type="submit" class="btn-update-credentials" id="btnUpdateCredentials">
+                  <span>Update Credentials</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Modal 1: Add / Edit Flight Modal -->
+  <div class="modal-overlay" id="flightFormModal" role="dialog" aria-modal="true" aria-labelledby="modalFlightTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalFlightTitle">Add New Flight</h3>
+        <button type="button" class="btn-close-modal" id="closeFlightModalBtn" aria-label="Close modal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" style="width: 20px; height: 20px;">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <form id="flightRecordForm" novalidate>
+        <div class="modal-body">
+          <div class="modal-form-grid">
+
+            <!-- Flight Number -->
+            <div class="modal-form-group">
+              <label class="modal-label" for="flightNumberInput">Flight Number</label>
+              <input type="text" id="flightNumberInput" class="modal-input-control" placeholder="e.g. AV-204" required>
+              <span class="modal-error-msg" id="errFlightNumber"></span>
+            </div>
+
+            <!-- Airline Name -->
+            <div class="modal-form-group">
+              <label class="modal-label" for="airlineNameInput">Airline Name</label>
+              <input type="text" id="airlineNameInput" class="modal-input-control" value="AeroVista Airlines" required>
+              <span class="modal-error-msg" id="errAirlineName"></span>
+            </div>
+
+            <!-- Source Airport & City -->
+            <div class="modal-form-group">
+              <label class="modal-label" for="sourceAirportInput">Source Airport & City</label>
+              <select id="sourceAirportInput" class="modal-input-control modal-select-control" required>
+                <option value="" disabled selected>Select Origin</option>
+                <option value="Dubai (DXB)">Dubai (DXB) - International</option>
+                <option value="London (LHR)">London (LHR) - Heathrow</option>
+                <option value="Doha (DOH)">Doha (DOH) - Hamad Intl</option>
+                <option value="New York (JFK)">New York (JFK) - John F. Kennedy</option>
+                <option value="Paris (CDG)">Paris (CDG) - Charles de Gaulle</option>
+                <option value="Tokyo (HND)">Tokyo (HND) - Haneda</option>
+                <option value="Singapore (SIN)">Singapore (SIN) - Changi</option>
+                <option value="Sydney (SYD)">Sydney (SYD) - Kingsford Smith</option>
+                <option value="Mumbai (BOM)">Mumbai (BOM) - Chhatrapati Shivaji</option>
+                <option value="Frankfurt (FRA)">Frankfurt (FRA) - Airport</option>
+                <option value="Hong Kong (HKG)">Hong Kong (HKG) - International</option>
+                <option value="Rome (FCO)">Rome (FCO) - Fiumicino</option>
+              </select>
+              <span class="modal-error-msg" id="errSourceAirport"></span>
+            </div>
+
+            <!-- Destination Airport & City -->
+            <div class="modal-form-group">
+              <label class="modal-label" for="destAirportInput">Destination Airport & City</label>
+              <select id="destAirportInput" class="modal-input-control modal-select-control" required>
+                <option value="" disabled selected>Select Destination</option>
+                <option value="London (LHR)">London (LHR) - Heathrow</option>
+                <option value="Dubai (DXB)">Dubai (DXB) - International</option>
+                <option value="Doha (DOH)">Doha (DOH) - Hamad Intl</option>
+                <option value="New York (JFK)">New York (JFK) - John F. Kennedy</option>
+                <option value="Paris (CDG)">Paris (CDG) - Charles de Gaulle</option>
+                <option value="Tokyo (HND)">Tokyo (HND) - Haneda</option>
+                <option value="Singapore (SIN)">Singapore (SIN) - Changi</option>
+                <option value="Sydney (SYD)">Sydney (SYD) - Kingsford Smith</option>
+                <option value="Mumbai (BOM)">Mumbai (BOM) - Chhatrapati Shivaji</option>
+                <option value="Frankfurt (FRA)">Frankfurt (FRA) - Airport</option>
+                <option value="Hong Kong (HKG)">Hong Kong (HKG) - International</option>
+                <option value="Rome (FCO)">Rome (FCO) - Fiumicino</option>
+              </select>
+              <span class="modal-error-msg" id="errDestAirport"></span>
+            </div>
+
+            <!-- Departure Date -->
+            <div class="modal-form-group">
+              <label class="modal-label" for="deptDateFormInput">Departure Date</label>
+              <input type="date" id="deptDateFormInput" class="modal-input-control" required>
+              <span class="modal-error-msg" id="errDeptDate"></span>
+            </div>
+
+            <!-- Departure Time -->
+            <div class="modal-form-group">
+              <label class="modal-label" for="deptTimeFormInput">Departure Time (24h)</label>
+              <input type="time" id="deptTimeFormInput" class="modal-input-control" required>
+              <span class="modal-error-msg" id="errDeptTime"></span>
+            </div>
+
+            <!-- Arrival Date -->
+            <div class="modal-form-group">
+              <label class="modal-label" for="arrDateFormInput">Arrival Date</label>
+              <input type="date" id="arrDateFormInput" class="modal-input-control" required>
+              <span class="modal-error-msg" id="errArrDate"></span>
+            </div>
+
+            <!-- Arrival Time -->
+            <div class="modal-form-group">
+              <label class="modal-label" for="arrTimeFormInput">Arrival Time (24h)</label>
+              <input type="time" id="arrTimeFormInput" class="modal-input-control" required>
+              <span class="modal-error-msg" id="errArrTime"></span>
+              <span class="modal-duration-preview" id="durationPreview">Calculated Duration: --</span>
+            </div>
+
+            <!-- Ticket Fare -->
+            <div class="modal-form-group">
+              <label class="modal-label" for="ticketFareInput">Ticket Fare (₹ INR)</label>
+              <input type="number" id="ticketFareInput" class="modal-input-control" placeholder="e.g. 5500" min="1"
+                step="1" required>
+              <span class="modal-error-msg" id="errTicketFare"></span>
+            </div>
+
+            <!-- Total Seat Capacity -->
+            <div class="modal-form-group">
+              <label class="modal-label" for="totalSeatsInput">Total Seat Capacity</label>
+              <input type="number" id="totalSeatsInput" class="modal-input-control" placeholder="e.g. 260" min="1"
+                max="850" required>
+              <span class="modal-error-msg" id="errTotalSeats"></span>
+            </div>
+
+            <!-- Available Seats (Optional/Auto default to Total) -->
+            <div class="modal-form-group">
+              <label class="modal-label" for="availableSeatsInput">Available Seats</label>
+              <input type="number" id="availableSeatsInput" class="modal-input-control"
+                placeholder="Defaults to Total Capacity" min="0" required>
+              <span class="modal-error-msg" id="errAvailableSeats"></span>
+            </div>
+
+            <!-- Flight Status -->
+            <div class="modal-form-group">
+              <label class="modal-label" for="flightStatusSelect">Flight Status</label>
+              <select id="flightStatusSelect" class="modal-input-control modal-select-control" required>
+                <option value="Scheduled">Scheduled</option>
+                <option value="On Time" selected>On Time</option>
+                <option value="Boarding">Boarding</option>
+                <option value="Delayed">Delayed</option>
+                <option value="Cancelled">Cancelled</option>
+              </select>
+              <span class="modal-error-msg" id="errFlightStatus"></span>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-modal-cancel" id="cancelFlightModalBtn">Cancel</button>
+          <button type="submit" class="btn-modal-save" id="saveFlightBtn">Save Flight</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 2: Delete Confirmation Modal -->
+  <div class="modal-overlay" id="deleteConfirmModal" role="dialog" aria-modal="true" aria-labelledby="deleteModalTitle">
+    <div class="modal-card modal-sm">
+      <div class="modal-header">
+        <h3 class="modal-title" id="deleteModalTitle" style="color: #FF5A5F;">Confirm Deletion</h3>
+        <button type="button" class="btn-close-modal" id="closeDeleteModalBtn" aria-label="Close modal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" style="width: 20px; height: 20px;">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="delete-confirm-text">
+          Are you sure you want to delete flight <span class="delete-flight-highlight"
+            id="deleteFlightCodeText">--</span>?
+        </p>
+        <p class="delete-confirm-text" style="font-size: 0.8rem; color: var(--color-ivory-muted);">
+          This will remove the flight schedule, route details, and all associated seat inventory from the system.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-modal-cancel" id="cancelDeleteModalBtn">Cancel</button>
+        <button type="button" class="btn-modal-delete" id="confirmDeleteFlightBtn">Delete Flight</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Booking Details View Modal -->
+  <div class="modal-overlay" id="bookingDetailsModal" role="dialog" aria-modal="true"
+    aria-labelledby="bookingModalTitle">
+    <div class="modal-card modal-lg" style="max-width: 760px;">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title" id="bookingModalTitle">Reservation Record Details</h3>
+          <span style="font-size: 0.8rem; color: var(--color-ivory-muted);">Verified demonstration booking record</span>
+        </div>
+        <button type="button" class="btn-close-modal" id="closeBookingDetailsModalBtn" aria-label="Close modal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" style="width: 20px; height: 20px;">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body" style="padding: 1.5rem 1.75rem;">
+        <!-- Status & PNR Header Strip in Modal -->
+        <div
+          style="display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.3); border: 1px solid rgba(198,166,107,0.25); border-radius: 8px; padding: 12px 18px; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <span
+              style="font-size: 0.72rem; color: var(--color-ivory-muted); text-transform: uppercase; letter-spacing: 0.05em; display: block;">Booking
+              Reference</span>
+            <strong id="modalBookingPnr"
+              style="font-family: monospace; font-size: 1.25rem; color: var(--color-champagne-light); letter-spacing: 0.08em;">AV-XXXXXX</strong>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <span class="status-pill" id="modalBookingStatusPill">Confirmed</span>
+            <span class="status-pill" id="modalPaymentStatusPill">Paid</span>
+          </div>
+        </div>
+
+        <!-- Flight & Route Grid -->
+        <div
+          style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px 16px; margin-bottom: 20px;">
+          <h4
+            style="font-family: var(--font-serif); color: var(--color-champagne); font-size: 1.05rem; margin-bottom: 10px;">
+            Flight &amp; Itinerary Information</h4>
+          <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; font-size: 0.85rem;">
+            <div>
+              <span style="color: var(--color-ivory-muted); font-size: 0.75rem; display: block;">Airline &amp;
+                Flight</span>
+              <strong id="modalFlightNumber" style="color: var(--color-ivory);">AeroVista AV-801</strong>
+            </div>
+            <div>
+              <span style="color: var(--color-ivory-muted); font-size: 0.75rem; display: block;">Route</span>
+              <strong id="modalRoute" style="color: var(--color-ivory);">DXB → BOM</strong>
+            </div>
+            <div>
+              <span style="color: var(--color-ivory-muted); font-size: 0.75rem; display: block;">Travel Date &amp;
+                Time</span>
+              <strong id="modalTravelDate" style="color: var(--color-ivory);">19 Nov 2026 • 13:10</strong>
+            </div>
+            <div>
+              <span style="color: var(--color-ivory-muted); font-size: 0.75rem; display: block;">Cabin Class</span>
+              <strong id="modalCabinClass" style="color: var(--color-ivory);">Economy Class</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Passengers & Seat Assignment -->
+        <div
+          style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px 16px; margin-bottom: 20px;">
+          <h4
+            style="font-family: var(--font-serif); color: var(--color-champagne); font-size: 1.05rem; margin-bottom: 10px;">
+            Passenger Manifest &amp; Seat Allocations</h4>
+          <div id="modalPassengersList" style="display: flex; flex-direction: column; gap: 8px;">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Financial & Payment Summary -->
+        <div
+          style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px 16px;">
+          <h4
+            style="font-family: var(--font-serif); color: var(--color-champagne); font-size: 1.05rem; margin-bottom: 10px;">
+            Financial &amp; Payment Summary</h4>
+          <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; font-size: 0.85rem; margin-bottom: 10px;">
+            <div>
+              <span style="color: var(--color-ivory-muted); font-size: 0.75rem; display: block;">Base Ticket Fare</span>
+              <span id="modalTicketFare" style="color: var(--color-ivory);">₹0</span>
+            </div>
+            <div>
+              <span style="color: var(--color-ivory-muted); font-size: 0.75rem; display: block;">Seat Charges</span>
+              <span id="modalSeatCharges" style="color: var(--color-ivory);">₹0</span>
+            </div>
+            <div>
+              <span style="color: var(--color-ivory-muted); font-size: 0.75rem; display: block;">Total Paid</span>
+              <strong id="modalTotalPaid" style="color: var(--color-champagne-light); font-size: 1.05rem;">₹0</strong>
+            </div>
+            <div>
+              <span style="color: var(--color-ivory-muted); font-size: 0.75rem; display: block;">Payment Channel /
+                Ref</span>
+              <span id="modalPaymentChannel" style="color: var(--color-ivory);">Credit Card</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center;">
+        <button type="button" class="btn-action-btn btn-action-delete" id="modalBtnCancelBooking"
+          style="padding: 0.55rem 1rem;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="15" y1="9" x2="9" y2="15"></line>
+            <line x1="9" y1="9" x2="15" y2="15"></line>
+          </svg>
+          <span>Cancel This Booking</span>
+        </button>
+        <button type="button" class="btn-modal-cancel" id="closeBookingDetailsBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: Admin Cancel Booking Confirmation Modal -->
+  <div class="modal-overlay" id="adminCancelConfirmModal" role="dialog" aria-modal="true"
+    aria-labelledby="adminCancelModalTitle">
+    <div class="modal-card modal-sm">
+      <div class="modal-header">
+        <h3 class="modal-title" id="adminCancelModalTitle" style="color: #FF5A5F;">Confirm Reservation Cancellation</h3>
+        <button type="button" class="btn-close-modal" id="closeAdminCancelModalBtn" aria-label="Close modal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" style="width: 20px; height: 20px;">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="delete-confirm-text">
+          Are you sure you want to cancel reservation <span class="delete-flight-highlight"
+            id="adminCancelPnrText">AV-XXXXXX</span>?
+        </p>
+        <p class="delete-confirm-text" style="font-size: 0.8rem; color: var(--color-ivory-muted);">
+          This will update the reservation status to <strong>Cancelled</strong>, initiate refund processing, and release
+          all assigned passenger seats back into available inventory.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-modal-cancel" id="cancelAdminCancelModalBtn">Keep Booking</button>
+        <button type="button" class="btn-modal-delete" id="confirmAdminCancelBookingBtn">Confirm Cancellation</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 5: Passenger Profile Details Modal -->
+  <div class="modal-overlay" id="passengerDetailsModal" role="dialog" aria-modal="true"
+    aria-labelledby="passengerModalTitle">
+    <div class="modal-card modal-lg" style="max-width: 760px;">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title" id="passengerModalTitle">Passenger Profile &amp; History</h3>
+          <span style="font-size: 0.8rem; color: var(--color-ivory-muted);">Comprehensive member record &amp; booking
+            itinerary</span>
+        </div>
+        <button type="button" class="btn-close-modal" id="closePassengerDetailsModalBtn" aria-label="Close modal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" style="width: 20px; height: 20px;">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body" style="padding: 1.5rem 1.75rem;">
+        <!-- Passenger Header Strip -->
+        <div
+          style="display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.3); border: 1px solid rgba(198,166,107,0.25); border-radius: 8px; padding: 12px 18px; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <span
+              style="font-size: 0.72rem; color: var(--color-ivory-muted); text-transform: uppercase; letter-spacing: 0.05em; display: block;">Passenger
+              ID</span>
+            <strong id="modalPassengerId"
+              style="font-family: monospace; font-size: 1.25rem; color: var(--color-champagne-light); letter-spacing: 0.08em;">PAX-001</strong>
+          </div>
+          <div>
+            <span class="status-pill" id="modalPassengerStatusPill">Active</span>
+          </div>
+        </div>
+
+        <!-- Personal & Contact Info Grid -->
+        <div
+          style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px 16px; margin-bottom: 20px;">
+          <h4
+            style="font-family: var(--font-serif); color: var(--color-champagne); font-size: 1.05rem; margin-bottom: 10px;">
+            Personal &amp; Contact Details</h4>
+          <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; font-size: 0.85rem;">
+            <div>
+              <span style="color: var(--color-ivory-muted); font-size: 0.75rem; display: block;">Full Name</span>
+              <strong id="modalPassengerFullName" style="color: var(--color-ivory);">Alexander Wright</strong>
+            </div>
+            <div>
+              <span style="color: var(--color-ivory-muted); font-size: 0.75rem; display: block;">Email Address</span>
+              <span id="modalPassengerEmail" style="color: var(--color-ivory);">alexander.wright@luxurytravel.com</span>
+            </div>
+            <div>
+              <span style="color: var(--color-ivory-muted); font-size: 0.75rem; display: block;">Mobile Number</span>
+              <span id="modalPassengerPhone" style="color: var(--color-ivory);">+971 50 123 4567</span>
+            </div>
+            <div>
+              <span style="color: var(--color-ivory-muted); font-size: 0.75rem; display: block;">Nationality</span>
+              <span id="modalPassengerNationality" style="color: var(--color-ivory);">United Arab Emirates</span>
+            </div>
+            <div>
+              <span style="color: var(--color-ivory-muted); font-size: 0.75rem; display: block;">Date of Birth</span>
+              <span id="modalPassengerDob" style="color: var(--color-ivory);">1990-05-15</span>
+            </div>
+            <div>
+              <span style="color: var(--color-ivory-muted); font-size: 0.75rem; display: block;">Registration
+                Date</span>
+              <span id="modalPassengerRegDate" style="color: var(--color-ivory);">2026-10-15</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Booking History Section -->
+        <div
+          style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 14px 16px;">
+          <h4
+            style="font-family: var(--font-serif); color: var(--color-champagne); font-size: 1.05rem; margin-bottom: 10px;">
+            Booking History &amp; Associated PNRs</h4>
+          <div id="modalPassengerBookingsList" style="display: flex; flex-direction: column; gap: 8px;">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center;">
+        <button type="button" class="btn-action-btn" id="modalBtnToggleStatus" style="padding: 0.55rem 1rem;">
+          <span id="modalBtnToggleStatusText">Deactivate Account</span>
+        </button>
+        <button type="button" class="btn-modal-cancel" id="closePassengerDetailsBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 6: Status Toggle Confirmation Modal (Activate / Deactivate) -->
+  <div class="modal-overlay" id="statusToggleConfirmModal" role="dialog" aria-modal="true"
+    aria-labelledby="statusToggleModalTitle">
+    <div class="modal-card modal-sm">
+      <div class="modal-header">
+        <h3 class="modal-title" id="statusToggleModalTitle">Confirm Account Status Change</h3>
+        <button type="button" class="btn-close-modal" id="closeStatusToggleModalBtn" aria-label="Close modal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" style="width: 20px; height: 20px;">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="delete-confirm-text">
+          Are you sure you want to <strong id="statusToggleActionWord"
+            style="color: var(--color-champagne-light);">deactivate</strong> the account for <span
+            class="delete-flight-highlight" id="statusTogglePassengerName">--</span> (<span
+            id="statusTogglePassengerId">--</span>)?
+        </p>
+        <p class="delete-confirm-text" style="font-size: 0.8rem; color: var(--color-ivory-muted);"
+          id="statusToggleExplanation">
+          Inactive accounts cannot log in to manage or book flights, but all historical booking records remain
+          permanently intact.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-modal-cancel" id="cancelStatusToggleModalBtn">Cancel</button>
+        <button type="button" class="btn-modal-save" id="confirmStatusToggleBtn">Confirm Change</button>
+      </div>
+    </div>
+  </div>
+
+  </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/admin.js"></script>
+</body>
+
+</html>

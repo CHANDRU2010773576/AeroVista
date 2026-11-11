@@ -1,0 +1,635 @@
+/* ==========================================================================
+   AeroVista Airlines – Step 8: Payment Gateway Stylesheet
+   Theme: Obsidian (#151515), Champagne Gold (#C6A66B), Ivory (#F5F2EB)
+   ========================================================================== */
+
+:root {
+  --color-bg: var(--color-obsidian, #151515);
+  --color-gold: var(--color-champagne, #C6A66B);
+  --color-gold-light: var(--color-champagne-light, #E5C98E);
+  --color-text-primary: var(--color-ivory, #F5F2EB);
+  --color-text-muted: var(--color-ivory-muted, #8E8B83);
+}
+
+.payment-page-main {
+  min-height: calc(100vh - 160px);
+  padding-top: 96px;
+  padding-bottom: 120px;
+  background-color: var(--color-bg);
+  background-image: radial-gradient(circle at 50% 10%, rgba(198, 166, 107, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(198, 166, 107, 0.03) 0%, transparent 40%);
+}
+
+.payment-page-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+/* 1. Top Navigation Bar */
+.payment-top-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-back-manifest {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-gold-light);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(198, 166, 107, 0.3);
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.btn-back-manifest:hover {
+  background: var(--color-gold);
+  color: #121212;
+  box-shadow: 0 0 12px rgba(198, 166, 107, 0.35);
+  transform: translateX(-2px);
+}
+
+.btn-back-manifest svg {
+  width: 16px;
+  height: 16px;
+}
+
+.step-breadcrumb-badge {
+  background: rgba(198, 166, 107, 0.12);
+  border: 1px solid rgba(198, 166, 107, 0.3);
+  color: var(--color-gold-light);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+/* 2. Header Strip */
+.payment-header-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.payment-title-group h1 {
+  font-family: var(--font-serif);
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+
+.payment-title-group h1 .gold-accent {
+  color: var(--color-gold-light);
+  font-style: italic;
+}
+
+.payment-flight-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  flex-wrap: wrap;
+}
+
+.meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(198, 166, 107, 0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.meta-pill strong {
+  color: var(--color-gold-light);
+}
+
+/* 3. Main Layout: Payment Form (Left) + Booking Summary (Right) */
+.payment-layout {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 32px;
+  align-items: start;
+}
+
+/* Payment Methods Selector Tabs */
+.payment-methods-card {
+  background: #171717;
+  border: 1px solid rgba(198, 166, 107, 0.28);
+  border-radius: 20px;
+  padding: 28px 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+}
+
+.methods-tabs-header {
+  margin-bottom: 20px;
+}
+
+.methods-tabs-header h2 {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  color: var(--color-text-primary);
+  margin-bottom: 6px;
+}
+
+.methods-tabs-header p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.payment-tab-selector {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.method-tab-btn {
+  background: #202023;
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 14px 12px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-muted);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.method-tab-btn svg {
+  width: 24px;
+  height: 24px;
+  color: var(--color-gold);
+}
+
+.method-tab-btn:hover {
+  border-color: rgba(198, 166, 107, 0.4);
+  color: var(--color-text-primary);
+}
+
+.method-tab-btn.is-active {
+  border-color: var(--color-gold);
+  background: rgba(198, 166, 107, 0.12);
+  color: var(--color-gold-light);
+  box-shadow: 0 0 14px rgba(198, 166, 107, 0.25);
+}
+
+/* Input Fields & Groups */
+.form-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.form-field-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  height: 48px;
+  background: #202023;
+  border: 1.5px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  padding: 0 14px;
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  background: #252529;
+  box-shadow: 0 0 0 2px rgba(198, 166, 107, 0.25);
+}
+
+.form-input.has-error {
+  border-color: #FF5A5F !important;
+  box-shadow: 0 0 0 2px rgba(255, 90, 95, 0.2) !important;
+}
+
+.field-error-msg {
+  font-size: 0.75rem;
+  color: #FF5A5F;
+  margin-top: 3px;
+  display: none;
+}
+
+.field-error-msg.visible {
+  display: block;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Card Mockup Visual */
+.card-visual-preview {
+  background: linear-gradient(135deg, #26262b 0%, #151517 100%);
+  border: 1px solid rgba(198, 166, 107, 0.4);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 22px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card-visual-preview::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(198, 166, 107, 0.25) 0%, transparent 70%);
+}
+
+.card-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.card-chip {
+  width: 36px;
+  height: 26px;
+  background: linear-gradient(135deg, #d4af37, #aa820a);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.card-brand-label {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--color-gold-light);
+  letter-spacing: 1px;
+}
+
+.card-number-display {
+  font-family: monospace;
+  font-size: 1.15rem;
+  letter-spacing: 2px;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+}
+
+.card-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.card-holder-display {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.card-expiry-display {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* Simulation Outcome Toggle */
+.simulation-mode-panel {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(198, 166, 107, 0.35);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.sim-label-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.sim-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-gold-light);
+}
+
+.sim-desc {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.sim-select {
+  background: #202023;
+  color: #FFFFFF;
+  border: 1px solid rgba(198, 166, 107, 0.4);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+/* Summary Sidebar */
+.payment-summary-sidebar {
+  position: sticky;
+  top: 90px;
+}
+
+.summary-card {
+  background: #171717;
+  border: 1px solid rgba(198, 166, 107, 0.35);
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 12px;
+}
+
+.card-title-row h3 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--color-gold-light);
+  margin: 0;
+}
+
+.summary-flight-meta {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.summary-flight-meta .flight-name {
+  color: var(--color-gold-light);
+  font-weight: 700;
+}
+
+.summary-flight-meta .route-text {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.summary-flight-meta .sub-meta {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+}
+
+.passenger-seat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.passenger-seat-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.84rem;
+}
+
+.passenger-seat-item .p-seat-name {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.passenger-seat-item .p-seat-pill {
+  background: rgba(198, 166, 107, 0.15);
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold-light);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.fare-breakdown-block {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 14px;
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fare-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.86rem;
+}
+
+.fare-row .fare-label {
+  color: var(--color-text-muted);
+}
+
+.fare-row .fare-value {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.total-fare-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 1px solid rgba(198, 166, 107, 0.35);
+  margin-bottom: 20px;
+}
+
+.total-fare-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.total-fare-amt {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--color-gold-light);
+}
+
+.btn-pay-now {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #E5C98E 0%, #C6A66B 100%);
+  color: #121212;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.25s ease;
+  font-family: inherit;
+  box-shadow: 0 4px 16px rgba(198, 166, 107, 0.35);
+}
+
+.btn-pay-now:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(198, 166, 107, 0.5);
+}
+
+.btn-pay-now:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Modals */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  padding: 20px;
+}
+
+.modal-overlay.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-box {
+  background: #191919;
+  border: 1px solid var(--color-gold);
+  border-radius: 20px;
+  padding: 36px 32px;
+  max-width: 520px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+.modal-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(198, 166, 107, 0.2);
+  border-top-color: var(--color-gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.modal-title {
+  font-family: var(--font-serif);
+  font-size: 1.7rem;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+}
+
+.modal-desc {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.modal-btn {
+  padding: 12px 24px;
+  border-radius: 24px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+@media (max-width: 992px) {
+  .payment-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-summary-sidebar {
+    position: static;
+  }
+}

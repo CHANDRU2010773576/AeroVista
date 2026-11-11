@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Create your AeroVista Airlines membership account to book flights, enjoy personalized luxury services, and manage your journeys.">
+  <title>Create Your Account | AeroVista Airlines</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Core & Auth Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+
+<body class="auth-page-body">
+
+  <!-- Background Layer -->
+  <div class="auth-bg-layer" aria-hidden="true"></div>
+
+  <!-- Top Header with Brand & Back Link -->
+  <header class="auth-header">
+    <a href="index.html" class="brand-logo" aria-label="AeroVista Airlines Home">
+      <svg class="gold-wing-icon" viewBox="0 0 44 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1.5 22C10 22 17 17 24 10C29 5 35 1.5 42.5 0.5C36 4.5 30 11 25.5 16C19 23.5 10 25.5 1.5 22Z"
+          fill="url(#wingGradReg)" />
+        <path d="M7 23.5C13 23 19 19.5 24.5 14C28 10.5 33 8 38 6.5C32.5 10.5 27 16 23 20C17.5 25.5 10 25.5 7 23.5Z"
+          fill="url(#wingGradReg)" opacity="0.85" />
+        <defs>
+          <linearGradient id="wingGradReg" x1="1" y1="13" x2="42.5" y2="13" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#E5C98E" />
+            <stop offset="0.6" stop-color="#C6A66B" />
+            <stop offset="1" stop-color="#9C7838" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="logo-text-group">
+        <span class="logo-name">AeroVista</span>
+        <span class="logo-sub">AIRLINES</span>
+      </div>
+    </a>
+
+    <a href="index.html" class="auth-back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      <span>Back to Home</span>
+    </a>
+  </header>
+
+  <!-- Main Section Card -->
+  <main class="auth-main">
+      <section class="auth-card auth-card-structured" aria-labelledby="registerHeading">
+        <div class="auth-card-header">
+          <h1 class="auth-title" id="registerHeading">Create Your Account</h1>
+          <p class="auth-subtitle">It only takes a moment to register for your AeroVista membership</p>
+        </div>
+
+        <!-- Alert notification container -->
+        <div class="auth-alert" id="registerAlert" role="alert"></div>
+
+              <form id="registerForm" class="auth-structured-form" novalidate>
+
+                <!-- SECTION 1: Account Credentials -->
+                <fieldset class="auth-form-section">
+                  <div class="section-lead">
+                    <legend class="section-lead-title">Account Credentials</legend>
+                    <p class="section-lead-desc">Your sign-in and security details</p>
+                  </div>
+
+                <div class="section-fields-grid">
+                  <!-- Email Address (Full Width) -->
+                  <div class="auth-field-group col-span-full">
+                    <label class="auth-label" for="regEmail">Email Address</label>
+                    <div class="auth-input-wrapper">
+                      <svg class="auth-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                      </svg>
+                      <input type="email" id="regEmail" name="email" class="auth-input"
+                        placeholder="e.g. name@domain.com" autocomplete="email" required>
+                    </div>
+                    <span class="auth-error-msg" id="regEmailError"></span>
+                  </div>
+
+                  <!-- Password -->
+                  <div class="auth-field-group col-span-half">
+                    <label class="auth-label" for="regPassword">Password</label>
+                    <div class="auth-input-wrapper">
+                      <svg class="auth-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                      </svg>
+                      <input type="password" id="regPassword" name="password" class="auth-input"
+                        placeholder="Minimum 6 characters" autocomplete="new-password" required>
+                      <button type="button" class="btn-toggle-password" data-target="regPassword"
+                        aria-label="Show password">
+                        <svg class="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                          stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                          <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        <svg class="icon-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                          <path
+                            d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24">
+                          </path>
+                          <line x1="1" y1="1" x2="23" y2="23"></line>
+                        </svg>
+                      </button>
+                    </div>
+                    <span class="auth-error-msg" id="regPassError"></span>
+                  </div>
+
+                  <!-- Confirm Password -->
+                  <div class="auth-field-group col-span-half">
+                    <label class="auth-label" for="regConfirmPassword">Confirm Password</label>
+                    <div class="auth-input-wrapper">
+                      <svg class="auth-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        <polyline points="9 12 11 14 15 10"></polyline>
+                      </svg>
+                      <input type="password" id="regConfirmPassword" name="confirmPassword" class="auth-input"
+                        placeholder="Re-enter password" autocomplete="new-password" required>
+                      <button type="button" class="btn-toggle-password" data-target="regConfirmPassword"
+                        aria-label="Show password">
+                        <svg class="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                          stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                          <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        <svg class="icon-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                          <path
+                            d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24">
+                          </path>
+                          <line x1="1" y1="1" x2="23" y2="23"></line>
+                        </svg>
+                      </button>
+                    </div>
+                    <span class="auth-error-msg" id="regConfirmPassError"></span>
+                  </div>
+
+                  <!-- Country Code & Mobile Number Combo (Full Width) -->
+                  <div class="auth-field-group col-span-full">
+                    <label class="auth-label" for="regPhone">Mobile Number</label>
+                    <div class="phone-combo-wrapper">
+                      <div class="auth-select-wrapper country-code-box">
+                        <select id="regCountryCode" name="countryCode" class="auth-select"
+                          aria-label="Country Dialing Code">
+                          <option value="+91" selected>India (+91)</option>
+                          <option value="+1">United States (+1)</option>
+                          <option value="+44">United Kingdom (+44)</option>
+                          <option value="+971">United Arab Emirates (+971)</option>
+                          <option value="+974">Qatar (+974)</option>
+                          <option value="+65">Singapore (+65)</option>
+                          <option value="+61">Australia (+61)</option>
+                          <option value="+33">France (+33)</option>
+                          <option value="+49">Germany (+49)</option>
+                          <option value="+81">Japan (+81)</option>
+                          <option value="+852">Hong Kong (+852)</option>
+                          <option value="+39">Italy (+39)</option>
+                        </select>
+                      </div>
+                      <div class="auth-input-wrapper flex-1">
+                        <svg class="auth-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                          <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                          </path>
+                        </svg>
+                        <input type="tel" id="regPhone" name="phone" class="auth-input" placeholder="e.g. 98765 43210"
+                          autocomplete="tel-national" required>
+                      </div>
+                    </div>
+                    <span class="auth-error-msg" id="regPhoneError"></span>
+                  </div>
+                </div>
+              </fieldset>
+
+                  <div class="auth-section-divider"></div>
+
+                  <!-- SECTION 2: Personal Details -->
+                  <fieldset class="auth-form-section">
+                    <div class="section-lead">
+                      <legend class="section-lead-title">Personal Details</legend>
+                      <p class="section-lead-desc">Your official identification name</p>
+                    </div>
+
+                    <div class="section-fields-grid">
+                      <!-- Title -->
+                      <div class="auth-field-group col-span-third">
+                        <label class="auth-label" for="regTitle">Title</label>
+                        <div class="auth-select-wrapper">
+                          <select id="regTitle" name="title" class="auth-select" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="Mr">Mr.</option>
+                            <option value="Ms">Ms.</option>
+                            <option value="Mrs">Mrs.</option>
+                          </select>
+                        </div>
+                        <span class="auth-error-msg" id="regTitleError"></span>
+                      </div>
+
+                      <!-- First Name -->
+                      <div class="auth-field-group col-span-third">
+                        <label class="auth-label" for="regFirstName">First Name</label>
+                        <div class="auth-input-wrapper">
+                          <input type="text" id="regFirstName" name="firstName" class="auth-input"
+                            placeholder="As on ID / Passport" autocomplete="given-name" required>
+                        </div>
+                        <span class="auth-error-msg" id="regFirstNameError"></span>
+                      </div>
+
+                      <!-- Middle Name -->
+                      <div class="auth-field-group col-span-third">
+                        <label class="auth-label" for="regMiddleName">Middle Name</label>
+                        <div class="auth-input-wrapper">
+                          <input type="text" id="regMiddleName" name="middleName" class="auth-input"
+                            placeholder="Middle name" autocomplete="additional-name" required>
+                        </div>
+                        <span class="auth-error-msg" id="regMiddleNameError"></span>
+                      </div>
+
+                      <!-- Last Name -->
+                      <div class="auth-field-group col-span-full">
+                        <label class="auth-label" for="regLastName">Last Name</label>
+                        <div class="auth-input-wrapper">
+                          <input type="text" id="regLastName" name="lastName" class="auth-input"
+                            placeholder="As on ID / Passport" autocomplete="family-name" required>
+                        </div>
+                        <span class="auth-error-msg" id="regLastNameError"></span>
+                        <p class="auth-field-tip">Enter your name as it appears on your identification document.</p>
+                      </div>
+                    </div>
+                  </fieldset>
+
+                        <div class="auth-section-divider"></div>
+
+                        <!-- SECTION 3: Additional Information -->
+                        <fieldset class="auth-form-section">
+                          <div class="section-lead">
+                            <legend class="section-lead-title">Additional Information</legend>
+                            <p class="section-lead-desc">Required for international flight compliance</p>
+                          </div>
+
+                          <div class="section-fields-grid">
+                            <!-- Date of Birth -->
+                            <div class="auth-field-group col-span-half">
+                              <label class="auth-label" for="regDob">Date of Birth</label>
+                              <div class="auth-input-wrapper">
+                                <svg class="auth-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                <input type="date" id="regDob" name="dateOfBirth" class="auth-input date-input"
+                                  required>
+                              </div>
+                              <span class="auth-error-msg" id="regDobError"></span>
+                            </div>
+
+                            <!-- Country/Region of Residence -->
+                            <div class="auth-field-group col-span-half">
+                              <label class="auth-label" for="regResidence">Country/Region of Residence</label>
+                              <div class="auth-select-wrapper">
+                                <select id="regResidence" name="residence" class="auth-select" required>
+                                  <option value="" disabled selected>Select country / region</option>
+                                  <option value="India">India</option>
+                                  <option value="United Arab Emirates">United Arab Emirates</option>
+                                  <option value="Qatar">Qatar</option>
+                                  <option value="United Kingdom">United Kingdom</option>
+                                  <option value="United States">United States</option>
+                                  <option value="Singapore">Singapore</option>
+                                  <option value="Australia">Australia</option>
+                                  <option value="France">France</option>
+                                  <option value="Germany">Germany</option>
+                                  <option value="Japan">Japan</option>
+                                  <option value="Canada">Canada</option>
+                                  <option value="Saudi Arabia">Saudi Arabia</option>
+                                  <option value="Other">Other Country / Region</option>
+                                </select>
+                              </div>
+                              <span class="auth-error-msg" id="regResidenceError"></span>
+                            </div>
+                          </div>
+                        </fieldset>
+
+                        <div class="auth-section-divider"></div>
+
+                        <!-- SECTION 4: Terms and Conditions -->
+                        <fieldset class="auth-form-section">
+                          <div class="section-lead">
+                            <legend class="section-lead-title">Terms & Conditions</legend>
+                            <p class="section-lead-desc">Passenger contract and privacy</p>
+                          </div>
+
+                          <div class="section-fields-grid">
+                            <div class="auth-field-group col-span-full">
+                              <label class="auth-checkbox-label terms-checkbox-row">
+                                <input type="checkbox" id="regTerms" name="agreeTerms" required>
+                                <span>
+                                  I agree to AeroVista's
+                                  <a href="#" class="auth-terms-link"
+                                    onclick="alert('AeroVista Passenger Terms and Conditions: Safe and reliable air travel standards apply to all reservations.'); return false;">Terms
+                                    and Conditions</a>,
+                                  and acknowledge that my personal information will be processed in accordance with the
+                                  <a href="#" class="auth-terms-link"
+                                    onclick="alert('AeroVista Privacy Policy: Your personal information is encrypted and protected.'); return false;">Privacy
+                                    Policy</a>.
+                                </span>
+                              </label>
+                              <span class="auth-error-msg" id="regTermsError"></span>
+                            </div>
+                          </div>
+                        </fieldset>
+
+                        <!-- Submit Button Row -->
+                        <div class="auth-submit-container">
+                          <button type="submit" class="btn-auth-submit" id="btnRegisterSubmit">
+                            <span>Create Account</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                              stroke-linecap="round" stroke-linejoin="round">
+                              <line x1="5" y1="12" x2="19" y2="12"></line>
+                              <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+        </form>
+
+        <!-- Bottom link to Log In -->
+        <footer class="auth-card-footer">
+          <span>Already have an account?</span>
+          <a href="login.html" class="auth-switch-link">Log In</a>
+        </footer>
+      </section>
+  </main>
+
+  <!-- Compact Footer -->
+  <footer class="auth-page-footer">
+    <div class="auth-page-footer-container">
+      <p class="copyright-text">&copy; 2026 AeroVista Airlines. All rights reserved.</p>
+      <p class="disclaimer-text">Official AeroVista Booking Portal</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/auth.js"></script>
+</body>
+
+</html>
